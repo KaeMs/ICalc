@@ -6,6 +6,8 @@
     <string name="comprehensive">Comprehensive</string>
     <string name="total_lost_only">Total Lost Only</string>
 
+    <string name="calculator">Calculator</string>
+
     <string name="placeholder_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec leo sapien. Pellentesque elementum dignissim lacinia. Pellentesque eu leo ex. Quisque sapien orci, faucibus in dapibus vitae, sagittis eget odio. Proin eleifend non augue a sollicitudin. Morbi ac efficitur nulla. Curabitur sit amet ex non tellus gravida consequat a eu arcu. Suspendisse a aliquet mauris. Aenean vulputate dui ac pharetra sodales. Donec euismod, justo quis tempus bibendum, mi eros laoreet purus, non dictum dolor nibh a risus. Curabitur rhoncus, odio rutrum molestie laoreet, velit elit faucibus eros, et euismod arcu tellus id diam. Mauris nec semper ante. Vivamus blandit in enim nec finibus.</string>
 
     <!-- General -->

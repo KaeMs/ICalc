@@ -1,6 +1,8 @@
 package com.gmg.icalc;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -24,6 +26,9 @@ public class MainActivity extends BaseActivity {
     LinearLayout totalLostView;
     @BindView(R.id.main_total_lost_content)
     CustomFontTextView totalLostContent;
+
+    @BindView(R.id.main_fab)
+    FloatingActionButton calculateFAB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,14 @@ public class MainActivity extends BaseActivity {
                 } else {
                     ViewAnimationUtils.expand(totalLostContent);
                 }
+            }
+        });
+
+        calculateFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CalculateActivity.class);
+                startActivity(intent);
             }
         });
     }

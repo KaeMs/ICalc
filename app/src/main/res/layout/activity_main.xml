@@ -1,131 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.gmg.icalc.MainActivity">
 
-    <com.gmg.icalc.CustomFontTextView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.gmg.icalc.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center_horizontal"
+                android:text="@string/placeholder_ipsum"/>
+
+            <!-- Otomate -->
+            <LinearLayout
+                android:id="@+id/main_otomate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_backgroundtv_height"
+                android:background="@color/lightGreen300"
+                android:orientation="horizontal">
+
+                <com.gmg.icalc.CustomFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/main_backgroundtv_height"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/otomate"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_large" />
+
+                <ImageView
+                    android:layout_width="@dimen/main_backgroundtv_height"
+                    android:layout_height="@dimen/main_backgroundtv_height"
+                    android:contentDescription="@string/expand"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
+
+            </LinearLayout>
+
+            <com.gmg.icalc.CustomFontTextView
+                android:id="@+id/main_otomate_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lightGreen300"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/placeholder_ipsum"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <!-- Comprehensive -->
+            <LinearLayout
+                android:id="@+id/main_comprehensive"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_backgroundtv_height"
+                android:background="@color/lightGreen500"
+                android:orientation="horizontal">
+
+                <com.gmg.icalc.CustomFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/main_backgroundtv_height"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/comprehensive"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_large" />
+
+                <ImageView
+                    android:layout_width="@dimen/main_backgroundtv_height"
+                    android:layout_height="@dimen/main_backgroundtv_height"
+                    android:contentDescription="@string/expand"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
+
+            </LinearLayout>
+
+            <com.gmg.icalc.CustomFontTextView
+                android:id="@+id/main_comprehensive_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lightGreen500"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/placeholder_ipsum"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <!-- Total Lost Only -->
+            <LinearLayout
+                android:id="@+id/main_total_lost"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_backgroundtv_height"
+                android:background="@color/lightGreen700"
+                android:orientation="horizontal">
+
+                <com.gmg.icalc.CustomFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/main_backgroundtv_height"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/total_lost_only"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_large" />
+
+                <ImageView
+                    android:layout_width="@dimen/main_backgroundtv_height"
+                    android:layout_height="@dimen/main_backgroundtv_height"
+                    android:contentDescription="@string/expand"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
+
+            </LinearLayout>
+
+            <com.gmg.icalc.CustomFontTextView
+                android:id="@+id/main_total_lost_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lightGreen700"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/placeholder_ipsum"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/main_fab"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <!-- Otomate -->
-    <LinearLayout
-        android:id="@+id/main_otomate"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/main_backgroundtv_height"
-        android:background="@color/lightGreen300"
-        android:orientation="horizontal">
-
-        <com.gmg.icalc.CustomFontTextView
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_backgroundtv_height"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="@string/otomate"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_large" />
-
-        <ImageView
-            android:layout_width="@dimen/main_backgroundtv_height"
-            android:layout_height="@dimen/main_backgroundtv_height"
-            android:contentDescription="@string/expand"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
-
-    </LinearLayout>
-
-    <com.gmg.icalc.CustomFontTextView
-        android:id="@+id/main_otomate_content"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lightGreen300"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/placeholder_ipsum"
-        android:textColor="@color/white"
-        android:visibility="gone" />
+        android:layout_gravity="bottom|right"
+        android:layout_margin="@dimen/fab_margin"
+        android:scaleType="centerInside"
+        app:fabSize="auto"
+        android:src="@drawable/ic_info_outline_white_48dp"
+        tools:ignore="RtlHardcoded" />
 
-    <!-- Comprehensive -->
-    <LinearLayout
-        android:id="@+id/main_comprehensive"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/main_backgroundtv_height"
-        android:background="@color/lightGreen500"
-        android:orientation="horizontal">
-
-        <com.gmg.icalc.CustomFontTextView
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_backgroundtv_height"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="@string/comprehensive"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_large" />
-
-        <ImageView
-            android:layout_width="@dimen/main_backgroundtv_height"
-            android:layout_height="@dimen/main_backgroundtv_height"
-            android:contentDescription="@string/expand"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
-
-    </LinearLayout>
-
-    <com.gmg.icalc.CustomFontTextView
-        android:id="@+id/main_comprehensive_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/lightGreen500"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/placeholder_ipsum"
-        android:textColor="@color/white"
-        android:visibility="gone" />
-
-    <!-- Total Lost Only -->
-    <LinearLayout
-        android:id="@+id/main_total_lost"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/main_backgroundtv_height"
-        android:background="@color/lightGreen700"
-        android:orientation="horizontal">
-
-        <com.gmg.icalc.CustomFontTextView
-            android:layout_width="0dp"
-            android:layout_height="@dimen/main_backgroundtv_height"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="@string/total_lost_only"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_large" />
-
-        <ImageView
-            android:layout_width="@dimen/main_backgroundtv_height"
-            android:layout_height="@dimen/main_backgroundtv_height"
-            android:contentDescription="@string/expand"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
-
-    </LinearLayout>
-
-    <com.gmg.icalc.CustomFontTextView
-        android:id="@+id/main_total_lost_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/lightGreen700"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/placeholder_ipsum"
-        android:textColor="@color/white"
-        android:visibility="gone" />
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

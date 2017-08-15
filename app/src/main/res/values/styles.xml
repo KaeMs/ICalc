@@ -15,4 +15,16 @@
         <item name="android:textColorLink">@color/lightGreen100</item>
     </style>
 
+
+    <style name="AppTheme.CalculateInsuranceStyle" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/AppTheme.CalculateInsuranceStyle.ActivityTransition</item>
+    </style>
+
+    <style name="AppTheme.CalculateInsuranceStyle.ActivityTransition" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/translate_down_to_start</item>
+        <item name="android:activityOpenExitAnimation">@anim/translate_start_to_bottom</item>
+        <item name="android:activityCloseEnterAnimation">@anim/translate_start_to_down</item>
+        <item name="android:activityCloseExitAnimation">@anim/translate_bottom_to_start</item>
+    </style>
+
 </resources>
