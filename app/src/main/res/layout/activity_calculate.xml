@@ -1,12 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <com.gmg.icalc.CustomFontTextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/calculator"/>
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <com.gmg.icalc.CustomViews.CustomFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="@string/rp" />
+
+                <com.gmg.icalc.CustomViews.CustomFontEditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:hint="@string/vehicle_price"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <!-- Category -->
+            <com.gmg.icalc.CustomViews.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/vehicle_category" />
+
+            <Spinner
+                android:id="@+id/calculate_vehicle_category_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dialog" />
+
+            <!-- Insurance Type -->
+            <com.gmg.icalc.CustomViews.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/insurance_type" />
+
+            <Spinner
+                android:id="@+id/calculate_insurance_type_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dialog" />
+
+            <!-- Year -->
+            <com.gmg.icalc.CustomViews.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/vehicle_year" />
+
+            <Spinner
+                android:id="@+id/calculate_vehicle_year_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dialog" />
+
+            <!-- Region -->
+            <com.gmg.icalc.CustomViews.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/region" />
+
+            <Spinner
+                android:id="@+id/calculate_region_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dialog" />
+
+            <!-- Additional Options -->
+            <com.gmg.icalc.CustomViews.CustomFontButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btn_medium_height"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_ltgreen100"
+                android:text="@string/additional_options" />
+
+            <!-- Calculate -->
+            <com.gmg.icalc.CustomViews.CustomFontButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btn_medium_height"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_ltgreen100"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/calculate" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

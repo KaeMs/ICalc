@@ -31,6 +31,11 @@
     <dimen name="btn_medium_height">34dp</dimen>
     <dimen name="btn_large_height">40dp</dimen>
 
+    <dimen name="avatar_large">64dp</dimen>
+    <dimen name="image_width">120dp</dimen>
+    <dimen name="image_final_width">32dp</dimen>
+    <dimen name="spacing_normal">16dp</dimen>
+
     <dimen name="btn_horizontal_margin_small">10dp</dimen>
     <dimen name="btn_vertical_margin_small">5dp</dimen>
     <dimen name="btn_horizontal_margin_medium">20dp</dimen>

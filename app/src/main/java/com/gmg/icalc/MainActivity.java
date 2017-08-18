@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.gmg.icalc.CustomViews.CustomFontTextView;
 import com.gmg.icalc.utils.ViewAnimationUtils;
 
 import butterknife.BindView;

@@ -1,22 +1,25 @@
-package com.gmg.icalc;
+package com.gmg.icalc.CustomViews;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 
+import com.gmg.icalc.FontCache;
+import com.gmg.icalc.R;
+
 /**
- * Created by Kevin on 8/14/2017. IC
+ * Created by Kevin Murvie on 8/18/2017. IC
  */
 
-public class CustomFontTextView extends android.support.v7.widget.AppCompatTextView {
+public class CustomFontEditText extends android.support.v7.widget.AppCompatEditText {
 
-    public CustomFontTextView(Context context, AttributeSet attrs) {
+    public CustomFontEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         applyCustomFont(context, attrs);
     }
 
-    public CustomFontTextView(Context context, AttributeSet attrs, int defStyle) {
+    public CustomFontEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         applyCustomFont(context, attrs);
     }
@@ -34,9 +37,7 @@ public class CustomFontTextView extends android.support.v7.widget.AppCompatTextV
 
         if (fontFace != null) {
             customFont = FontCache.getTypeface(fontFace, context);
-            if (customFont != null){
-                setTypeface(customFont);
-            }
+            setTypeface(customFont);
         }
     }
 }

@@ -2,9 +2,20 @@
     <string name="app_name">ICalc</string>
 
     <!-- Main -->
+    <string name="name">Name</string>
     <string name="otomate">Otomate</string>
     <string name="comprehensive">Comprehensive</string>
     <string name="total_lost_only">Total Lost Only</string>
+
+    <!-- Calculation -->
+    <string name="rp">Rp</string>
+    <string name="vehicle_price">Vehicle Price</string>
+    <string name="vehicle_category">Vehicle Category</string>
+    <string name="insurance_type">Insurance Type</string>
+    <string name="vehicle_year">Vehicle year of release</string>
+    <string name="region">Region</string>
+    <string name="additional_options">Additional Options</string>
+    <string name="calculate">Calculate</string>
 
     <string name="calculator">Calculator</string>
 

@@ -13,8 +13,17 @@
     <color name="blackOpa60">#99676767</color>
     <color name="blackOpa40">#66676767</color>
     <color name="blackOpa20">#33676767</color>
+    <color name="grey">#bdbdbd</color>
+    <color name="greyOpa80">#ccbdbdbd</color>
+    <color name="greyOpa60">#99bdbdbd</color>
+    <color name="greyOpa40">#66bdbdbd</color>
+    <color name="greyOpa20">#33bdbdbd</color>
 
     <color name="lightGreen100">#8BC34A</color>
+    <color name="lightGreen100Opa80">#cc8BC34A</color>
+    <color name="lightGreen100Opa60">#998BC34A</color>
+    <color name="lightGreen100Opa40">#668BC34A</color>
+    <color name="lightGreen100Opa20">#338BC34A</color>
     <color name="lightGreen200">#C5E1A5</color>
     <color name="lightGreen300">#AED581</color>
     <color name="lightGreen400">#9CCC65</color>
