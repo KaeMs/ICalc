@@ -2,8 +2,11 @@ package com.gmg.icalc;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.gmg.icalc.CustomViews.CustomFontTextView;
@@ -11,7 +14,24 @@ import com.gmg.icalc.utils.ViewAnimationUtils;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements AppBarLayout.OnOffsetChangedListener {
+
+    private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.9f;
+    private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS     = 0.3f;
+    private static final int ALPHA_ANIMATIONS_DURATION              = 200;
+
+    private boolean mIsTheTitleVisible          = false;
+    private boolean mIsTheTitleContainerVisible = true;
+
+    // Title
+    @BindView(R.id.main_toolbar_title)
+    CustomFontTextView toolbarTitle;
+    @BindView(R.id.main_appbar)
+    AppBarLayout appBarLayout;
+    @BindView(R.id.main_name_wrapper)
+    LinearLayout nameWrapper;
+    @BindView(R.id.main_name_frame_wrapper)
+    FrameLayout nameFrameWrapper;
     // Otomate
     @BindView(R.id.main_otomate)
     LinearLayout otomateView;
@@ -39,33 +59,42 @@ public class MainActivity extends BaseActivity {
         otomateView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (otomateContent.getVisibility() == View.VISIBLE){
-                    ViewAnimationUtils.collapse(otomateContent);
-                } else {
-                    ViewAnimationUtils.expand(otomateContent);
-                }
+                toggleOtomate();
+            }
+        });
+
+        otomateContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleOtomate();
             }
         });
 
         comprehensiveView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (comprehensiveContent.getVisibility() == View.VISIBLE){
-                    ViewAnimationUtils.collapse(comprehensiveContent);
-                } else {
-                    ViewAnimationUtils.expand(comprehensiveContent);
-                }
+                toggleComprehensive();
+            }
+        });
+
+        comprehensiveContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleComprehensive();
             }
         });
 
         totalLostView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (totalLostContent.getVisibility() == View.VISIBLE){
-                    ViewAnimationUtils.collapse(totalLostContent);
-                } else {
-                    ViewAnimationUtils.expand(totalLostContent);
-                }
+                toggleTotalLost();
+            }
+        });
+
+        totalLostContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleTotalLost();
             }
         });
 
@@ -76,5 +105,85 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+
+        appBarLayout.addOnOffsetChangedListener(this);
+
+        startAlphaAnimation(toolbarTitle, 0, View.INVISIBLE);
+    }
+
+    private void toggleOtomate(){
+        if (otomateContent.getVisibility() == View.VISIBLE){
+            ViewAnimationUtils.collapse(otomateContent);
+        } else {
+            ViewAnimationUtils.expand(otomateContent);
+        }
+    }
+
+    private void toggleComprehensive(){
+        if (comprehensiveContent.getVisibility() == View.VISIBLE){
+            ViewAnimationUtils.collapse(comprehensiveContent);
+        } else {
+            ViewAnimationUtils.expand(comprehensiveContent);
+        }
+    }
+
+    private void toggleTotalLost(){
+        if (totalLostContent.getVisibility() == View.VISIBLE){
+            ViewAnimationUtils.collapse(totalLostContent);
+        } else {
+            ViewAnimationUtils.expand(totalLostContent);
+        }
+    }
+
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int offset) {
+        int maxScroll = appBarLayout.getTotalScrollRange();
+        float percentage = (float) Math.abs(offset) / (float) maxScroll;
+
+        handleAlphaOnTitle(percentage);
+        handleToolbarTitleVisibility(percentage);
+    }
+
+    private void handleToolbarTitleVisibility(float percentage) {
+        if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
+
+            if(!mIsTheTitleVisible) {
+                startAlphaAnimation(toolbarTitle, ALPHA_ANIMATIONS_DURATION, View.VISIBLE);
+                mIsTheTitleVisible = true;
+            }
+
+        } else {
+
+            if (mIsTheTitleVisible) {
+                startAlphaAnimation(toolbarTitle, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE);
+                mIsTheTitleVisible = false;
+            }
+        }
+    }
+
+    private void handleAlphaOnTitle(float percentage) {
+        if (percentage >= PERCENTAGE_TO_HIDE_TITLE_DETAILS) {
+            if(mIsTheTitleContainerVisible) {
+                startAlphaAnimation(nameWrapper, ALPHA_ANIMATIONS_DURATION, View.INVISIBLE);
+                mIsTheTitleContainerVisible = false;
+            }
+
+        } else {
+
+            if (!mIsTheTitleContainerVisible) {
+                startAlphaAnimation(nameWrapper, ALPHA_ANIMATIONS_DURATION, View.VISIBLE);
+                mIsTheTitleContainerVisible = true;
+            }
+        }
+    }
+
+    public static void startAlphaAnimation (View v, long duration, int visibility) {
+        AlphaAnimation alphaAnimation = (visibility == View.VISIBLE)
+                ? new AlphaAnimation(0f, 1f)
+                : new AlphaAnimation(1f, 0f);
+
+        alphaAnimation.setDuration(duration);
+        alphaAnimation.setFillAfter(true);
+        v.startAnimation(alphaAnimation);
     }
 }

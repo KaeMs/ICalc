@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".CalculateActivity"
             android:theme="@style/AppTheme.CalculateInsuranceStyle"/>
+        <activity android:name=".CalculateAdditionalInfoActivity" />
+        <activity android:name=".CalculateResultActivity" />
     </application>
 
 </manifest>

@@ -16,6 +16,14 @@
     <string name="region">Region</string>
     <string name="additional_options">Additional Options</string>
     <string name="calculate">Calculate</string>
+    <!-- Insurance Category -->
+    <string name="non_truck">Non Truck</string>
+    <string name="truck_pickup_box">Truck/PickUp/Box</string>
+    <string name="bus">Bus</string>
+    <!-- Area -->
+    <string name="area_1">Wilayah 1</string>
+    <string name="area_2">Wilayah 2</string>
+    <string name="area_3">Wilayah 3</string>
 
     <string name="calculator">Calculator</string>
 

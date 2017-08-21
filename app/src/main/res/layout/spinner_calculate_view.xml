@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:layout_height="wrap_content">
+
+    <com.gmg.icalc.CustomViews.CustomFontTextView
+        android:id="@+id/calculate_view_selectedTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1"/>
+
+    <ImageView
+        android:layout_width="@dimen/btn_small_height"
+        android:layout_height="@dimen/btn_small_height"
+        android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+        android:scaleType="centerInside"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="@null"/>
+
+</LinearLayout>
