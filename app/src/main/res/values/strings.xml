@@ -9,13 +9,13 @@
 
     <!-- Calculation -->
     <string name="rp">Rp</string>
-    <string name="vehicle_price">Vehicle Price</string>
-    <string name="vehicle_category">Vehicle Category</string>
-    <string name="insurance_type">Insurance Type</string>
-    <string name="vehicle_year">Vehicle year of release</string>
-    <string name="region">Region</string>
-    <string name="additional_options">Additional Options</string>
-    <string name="calculate">Calculate</string>
+    <string name="vehicle_price">Harga Kendaraan</string>
+    <string name="vehicle_category">Kategori Kendaraan</string>
+    <string name="insurance_type">Jenis Asuransi</string>
+    <string name="vehicle_year">Tahun Kendaraan</string>
+    <string name="region">Wilayah</string>
+    <string name="additional_options">Perluasan</string>
+    <string name="calculate">Hitung</string>
     <!-- Insurance Category -->
     <string name="non_truck">Non Truck</string>
     <string name="truck_pickup_box">Truck/PickUp/Box</string>

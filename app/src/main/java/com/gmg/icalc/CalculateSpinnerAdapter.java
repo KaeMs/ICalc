@@ -21,7 +21,6 @@ public class CalculateSpinnerAdapter extends ArrayAdapter<CalculateModel> implem
 
     private List<CalculateModel> mDataset = new ArrayList<>();
     private Context context;
-    private String itemToShow;
 
     public CalculateSpinnerAdapter(@NonNull Context context, @LayoutRes int resource) {
         super(context, resource);
@@ -31,6 +30,7 @@ public class CalculateSpinnerAdapter extends ArrayAdapter<CalculateModel> implem
     public CalculateSpinnerAdapter(@NonNull Context context, @LayoutRes int resource, List<CalculateModel> calculateModels) {
         super(context, resource, calculateModels);
         this.context = context;
+        this.mDataset.addAll(calculateModels);
     }
 
     public void addList(List<CalculateModel> dataset) {

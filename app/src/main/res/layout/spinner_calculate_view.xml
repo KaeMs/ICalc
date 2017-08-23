@@ -11,12 +11,12 @@
         android:layout_marginStart="10dp"
         android:layout_weight="1"/>
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="@dimen/btn_small_height"
         android:layout_height="@dimen/btn_small_height"
         android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
         android:scaleType="centerInside"
         android:layout_gravity="center_vertical"
-        android:contentDescription="@null"/>
+        android:contentDescription="@null"/>-->
 
 </LinearLayout>

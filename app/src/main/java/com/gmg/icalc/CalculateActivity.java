@@ -3,6 +3,8 @@ package com.gmg.icalc;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -11,9 +13,12 @@ import com.gmg.icalc.CustomViews.CustomFontButton;
 import com.gmg.icalc.CustomViews.CustomFontEditText;
 import com.gmg.icalc.utils.CalculateUtils;
 
+import java.math.BigInteger;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 
@@ -42,7 +47,8 @@ public class CalculateActivity extends BaseActivity {
     @BindView(R.id.calculate_calculate_btn)
     CustomFontButton calculatebtn;
 
-    String additionalInfo = "";
+    private String additionalInfo = "";
+    private String current = "";
     private final int ADDITIONAL_INFO_REQ_CODE = 1001;
 
     @Override
@@ -52,11 +58,11 @@ public class CalculateActivity extends BaseActivity {
 
         categorySpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getCategory());
         categorySpinner.setAdapter(categorySpinnerAdapter);
-        insuranceTypeSpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getRegion());
+        insuranceTypeSpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getType());
         insuranceTypeSpinner.setAdapter(insuranceTypeSpinnerAdapter);
         vehicleYearSpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getVehicleYear());
         vehicleYearSpinner.setAdapter(vehicleYearSpinnerAdapter);
-        regionSpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getRegion());
+        regionSpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getArea());
         regionSpinner.setAdapter(regionSpinnerAdapter);
 
         addititionalOptsBtn.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +85,28 @@ public class CalculateActivity extends BaseActivity {
                         CalculateUtils.OTOMATE, additionalInfo), Toast.LENGTH_SHORT).show();
             }
         });
+
+        vehiclePriceET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                vehiclePriceET.removeTextChangedListener(this);
+                if (s.length() > 0) {
+                    String editedStr = String.format(Locale.GERMAN, "%,d", new BigInteger(vehiclePriceET.getText().toString().replaceAll("\\.", "").replaceAll(",", "")));
+                    vehiclePriceET.setText(editedStr);
+                }
+                vehiclePriceET.setSelection(vehiclePriceET.getText().length());
+                vehiclePriceET.addTextChangedListener(this);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
     }
 
     @Override
@@ -91,6 +119,12 @@ public class CalculateActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.translate_bottom_to_start, R.anim.translate_start_to_down);
+    }
+
     private List<CalculateModel> getCategory() {
         List<CalculateModel> returnCategory = new ArrayList<>();
 
@@ -101,7 +135,7 @@ public class CalculateActivity extends BaseActivity {
         return returnCategory;
     }
 
-    private List<CalculateModel> getRegion() {
+    private List<CalculateModel> getType() {
         List<CalculateModel> returnRegion = new ArrayList<>();
 
         returnRegion.add(new CalculateModel("0", getString(R.string.otomate)));
@@ -114,9 +148,9 @@ public class CalculateActivity extends BaseActivity {
     private List<CalculateModel> getVehicleYear() {
         List<CalculateModel> returnVehicleYear = new ArrayList<>();
 
-        Calendar calendar = Calendar.getInstance();
 
         for (int i = 0; i < 8; i++) {
+            Calendar calendar = Calendar.getInstance();
             calendar.add(Calendar.YEAR, i);
             returnVehicleYear.add(new CalculateModel(String.valueOf(i), String.valueOf(calendar.get(Calendar.YEAR))));
         }

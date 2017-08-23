@@ -19,8 +19,14 @@
         </activity>
         <activity android:name=".CalculateActivity"
             android:theme="@style/AppTheme.CalculateInsuranceStyle"/>
-        <activity android:name=".CalculateAdditionalInfoActivity" />
-        <activity android:name=".CalculateResultActivity" />
+        <activity android:name=".CalculateAdditionalInfoActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".CalculateResultActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
