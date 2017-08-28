@@ -10,13 +10,20 @@ public class SharedPreferenceUtilities {
     public static final String SESSION_SP = "SESSION_SP";
     public static final String INIT_DATA_STEP = "INIT_DATA_STEP";
     public static final String USER_ID = "USER_ID";
+    public static final String USER_EMAIL = "USER_EMAIL";
     public static final String USER_FIRST_NAME = "USER_FIRST_NAME";
     public static final String USER_LAST_NAME = "USER_LAST_NAME";
-    public static final String USER_GENDER = "USER_GENDER";
-    public static final String USER_DOB = "USER_DOB";
-    public static final String USER_EMAIL = "USER_EMAIL";
-    public static final String USER_EMAIL_IS_VERIFIED = "USER_EMAIL_IS_VERIFIED";
-    public static final String USER_PASSWORD = "USER_PASSWORD";
+    public static final String USER_AGENCY = "USER_AGENCY";
+    public static final String USER_DATE_JOIN = "USER_DATE_JOIN";
+    public static final String USER_DATE_EXPIRED = "USER_DATE_EXPIRED";
+    public static final String USER_PHOTO = "USER_PHOTO";
+    public static final String USER_PHONE = "USER_PHONE";
+    public static final String USER_LICENSE = "USER_LICENSE";
+    public static final String USER_DEVICE_IMEI = "USER_DEVICE_IMEI";
+    public static final String USER_STATUS = "USER_STATUS";
+    public static final String USER_CREATED_AT = "USER_CREATED_AT";
+    public static final String USER_UPDATED_AT = "USER_UPDATED_AT";
+    public static final String USER_API_TOKEN = "USER_API_TOKEN";
 
     public static final String GUIDE_SP = "GUIDE_SP";
     public static final String GUIDE_MAIN_SCREEN = "GUIDE_MAIN_SCREEN";

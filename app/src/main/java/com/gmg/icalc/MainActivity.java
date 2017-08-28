@@ -7,9 +7,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.gmg.icalc.CustomViews.CustomFontTextView;
+import com.gmg.icalc.utils.APIConstants;
 import com.gmg.icalc.utils.ViewAnimationUtils;
 
 import butterknife.BindView;
@@ -26,6 +30,8 @@ public class MainActivity extends BaseActivity implements AppBarLayout.OnOffsetC
     // Title
     @BindView(R.id.main_toolbar_title)
     CustomFontTextView toolbarTitle;
+    @BindView(R.id.main_avatar)
+    ImageView avatar;
     @BindView(R.id.main_appbar)
     AppBarLayout appBarLayout;
     @BindView(R.id.main_name_wrapper)
@@ -107,6 +113,17 @@ public class MainActivity extends BaseActivity implements AppBarLayout.OnOffsetC
         });
 
         appBarLayout.addOnOffsetChangedListener(this);
+
+        String avatarPath = SharedPreferenceUtilities.getFromSessionSP(this, SharedPreferenceUtilities.USER_PHOTO);
+
+        Glide.with(this)
+                .load(APIConstants.WEB_URL + avatarPath)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .fitCenter()
+                .skipMemoryCache(true)
+                .placeholder(MediaUtils.image_placeholder_black)
+                .error(MediaUtils.image_error_black)
+                .into(avatar);
 
         startAlphaAnimation(toolbarTitle, 0, View.INVISIBLE);
     }

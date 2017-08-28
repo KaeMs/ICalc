@@ -7,6 +7,13 @@
     <string name="comprehensive">Comprehensive</string>
     <string name="total_lost_only">Total Lost Only</string>
 
+    <!-- Login -->
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="complete_information_required">Mohon melengkapi informasi login anda</string>
+    <string name="logging_in">Mohon tunggu</string>
+
     <!-- Calculation -->
     <string name="rp">Rp</string>
     <string name="vehicle_price">Harga Kendaraan</string>
@@ -32,4 +39,5 @@
     <!-- General -->
     <string name="expand">Expand</string>
 
+    <string name="error_connection">Terjadi gangguan pada internet, silahkan coba lagi</string>
 </resources>
