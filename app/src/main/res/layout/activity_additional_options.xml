@@ -3,4 +3,36 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.gmg.icalc.CustomViews.CustomFontCheckBox
+        android:id="@+id/additional_options_tsfwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tsfwd"/>
+
+    <com.gmg.icalc.CustomViews.CustomFontCheckBox
+        android:id="@+id/additional_options_eqvet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/eqvet"/>
+
+    <com.gmg.icalc.CustomViews.CustomFontCheckBox
+        android:id="@+id/additional_options_srcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/srcc"/>
+
+    <com.gmg.icalc.CustomViews.CustomFontCheckBox
+        android:id="@+id/additional_options_ts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ts"/>
+
+    <com.gmg.icalc.CustomViews.CustomFontButton
+        android:id="@+id/additional_options_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_medium_height"
+        android:layout_gravity="bottom"
+        android:text="@string/additional_options"
+        android:background="@drawable/button_ltgreen100"/>
+
 </LinearLayout>

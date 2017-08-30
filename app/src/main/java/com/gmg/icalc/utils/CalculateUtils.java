@@ -1,5 +1,7 @@
 package com.gmg.icalc.utils;
 
+import com.gmg.icalc.CalculateAddOptionsModel;
+
 /**
  * Created by KM on 8/21/2017. IC
  */
@@ -58,7 +60,7 @@ public class CalculateUtils {
         }
     }
 
-    public static String calculate(String vehiclePrice, int insuranceType, String additionalOpts){
+    public static String calculate(String vehiclePrice, int insuranceType, CalculateAddOptionsModel additionalOpts){
         double percentage = 0;
         if (insuranceType == OTOMATE){
             percentage += getOtomate(vehiclePrice);
@@ -68,10 +70,10 @@ public class CalculateUtils {
             percentage += getOtomateSolitaire(vehiclePrice);
         }
 
-        if (additionalOpts.contains(TSWFD)) percentage += 0.1;
-        if (additionalOpts.contains(EQVET)) percentage += 0.1;
-        if (additionalOpts.contains(SRCC)) percentage += 0.05;
-        if (additionalOpts.contains(TS)) percentage += 0.05;
+        if (additionalOpts.isTSFWD()) percentage += 0.1;
+        if (additionalOpts.isEQVET()) percentage += 0.1;
+        if (additionalOpts.isSRCC()) percentage += 0.05;
+        if (additionalOpts.isTS()) percentage += 0.05;
 
         return String.valueOf(Double.parseDouble(vehiclePrice) * percentage);
     }

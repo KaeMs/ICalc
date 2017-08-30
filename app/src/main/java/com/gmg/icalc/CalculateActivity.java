@@ -12,9 +12,9 @@ import android.widget.Toast;
 import com.gmg.icalc.CustomViews.CustomFontButton;
 import com.gmg.icalc.CustomViews.CustomFontEditText;
 import com.gmg.icalc.utils.CalculateUtils;
+import com.google.gson.Gson;
 
 import java.math.BigInteger;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -47,7 +47,7 @@ public class CalculateActivity extends BaseActivity {
     @BindView(R.id.calculate_calculate_btn)
     CustomFontButton calculatebtn;
 
-    private String additionalInfo = "";
+    private CalculateAddOptionsModel calculateAddOptionsModel;
     private String current = "";
     private final int ADDITIONAL_INFO_REQ_CODE = 1001;
 
@@ -65,10 +65,14 @@ public class CalculateActivity extends BaseActivity {
         regionSpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getArea());
         regionSpinner.setAdapter(regionSpinnerAdapter);
 
+        calculateAddOptionsModel = new CalculateAddOptionsModel();
+
         addititionalOptsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CalculateActivity.this, CalculateAdditionalInfoActivity.class);
+                Intent intent = new Intent(CalculateActivity.this, CalculateAdditionalOptionsActivity.class);
+                Gson gson = new Gson();
+                intent.putExtra(CalculateUtils.ADDITIONAL_INFO_INTENT, gson.toJson(calculateAddOptionsModel));
                 startActivityForResult(intent, ADDITIONAL_INFO_REQ_CODE);
             }
         });
@@ -82,7 +86,7 @@ public class CalculateActivity extends BaseActivity {
                                 CalculateUtils.OTOMATE, additionalInfo));
                 startActivity(intent);*/
                 Toast.makeText(CalculateActivity.this, CalculateUtils.calculate(vehiclePriceET.getText().toString(),
-                        CalculateUtils.OTOMATE, additionalInfo), Toast.LENGTH_SHORT).show();
+                        CalculateUtils.OTOMATE, calculateAddOptionsModel), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -114,7 +118,8 @@ public class CalculateActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADDITIONAL_INFO_REQ_CODE) {
             if (resultCode == RESULT_OK) {
-                additionalInfo = data.getStringExtra(CalculateUtils.ADDITIONAL_INFO_INTENT);
+                Gson gson = new Gson();
+                calculateAddOptionsModel = gson.fromJson(data.getStringExtra(CalculateUtils.ADDITIONAL_INFO_INTENT), CalculateAddOptionsModel.class);
             }
         }
     }

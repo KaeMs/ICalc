@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.gmg.icalc.CustomViews.CustomFontTextView
+        android:id="@+id/calculate_result_actual_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.gmg.icalc.CustomViews.CustomFontTextView
+        android:id="@+id/calculate_result_additional"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.gmg.icalc.CustomViews.CustomFontTextView
+        android:id="@+id/calculate_result_third_party"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.gmg.icalc.CustomViews.CustomFontTextView
+        android:id="@+id/calculate_result_total_premi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.gmg.icalc.CustomViews.CustomFontButton
+        android:id="@+id/calculate_result_send_application"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_medium_height"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/button_ltgreen100" />
+
+</LinearLayout>
