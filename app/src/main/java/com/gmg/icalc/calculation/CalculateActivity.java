@@ -1,4 +1,4 @@
-package com.gmg.icalc;
+package com.gmg.icalc.calculation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.gmg.icalc.BaseActivity;
 import com.gmg.icalc.CustomViews.CustomFontButton;
 import com.gmg.icalc.CustomViews.CustomFontEditText;
+import com.gmg.icalc.R;
 import com.gmg.icalc.utils.CalculateUtils;
 import com.google.gson.Gson;
 
@@ -47,8 +49,8 @@ public class CalculateActivity extends BaseActivity {
     @BindView(R.id.calculate_calculate_btn)
     CustomFontButton calculatebtn;
 
-    private CalculateAddOptionsModel calculateAddOptionsModel;
-    private String current = "";
+    private CalculateAddOptComprehensiveModel calculateAddOptComprehensiveModel;
+
     private final int ADDITIONAL_INFO_REQ_CODE = 1001;
 
     @Override
@@ -65,15 +67,21 @@ public class CalculateActivity extends BaseActivity {
         regionSpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getArea());
         regionSpinner.setAdapter(regionSpinnerAdapter);
 
-        calculateAddOptionsModel = new CalculateAddOptionsModel();
+        calculateAddOptComprehensiveModel = new CalculateAddOptComprehensiveModel();
 
         addititionalOptsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CalculateActivity.this, CalculateAdditionalOptionsActivity.class);
-                Gson gson = new Gson();
-                intent.putExtra(CalculateUtils.ADDITIONAL_INFO_INTENT, gson.toJson(calculateAddOptionsModel));
-                startActivityForResult(intent, ADDITIONAL_INFO_REQ_CODE);
+                if (insuranceTypeSpinner.getSelectedItemPosition() == 1){
+                    Intent intent = new Intent(CalculateActivity.this, CalculateAdditionalOptionsComprehensiveActivity.class);
+                    Gson gson = new Gson();
+                    intent.putExtra(CalculateUtils.ADDITIONAL_INFO_INTENT, gson.toJson(calculateAddOptComprehensiveModel));
+                    startActivityForResult(intent, ADDITIONAL_INFO_REQ_CODE);
+                } else if (insuranceTypeSpinner.getSelectedItemPosition() == 2){
+
+                } else {
+                    Toast.makeText(CalculateActivity.this, getString(R.string.otomate_no_add_opt), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -86,7 +94,7 @@ public class CalculateActivity extends BaseActivity {
                                 CalculateUtils.OTOMATE, additionalInfo));
                 startActivity(intent);*/
                 Toast.makeText(CalculateActivity.this, CalculateUtils.calculate(vehiclePriceET.getText().toString(),
-                        CalculateUtils.OTOMATE, calculateAddOptionsModel), Toast.LENGTH_SHORT).show();
+                        CalculateUtils.OTOMATE, calculateAddOptComprehensiveModel), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -119,7 +127,7 @@ public class CalculateActivity extends BaseActivity {
         if (requestCode == ADDITIONAL_INFO_REQ_CODE) {
             if (resultCode == RESULT_OK) {
                 Gson gson = new Gson();
-                calculateAddOptionsModel = gson.fromJson(data.getStringExtra(CalculateUtils.ADDITIONAL_INFO_INTENT), CalculateAddOptionsModel.class);
+                calculateAddOptComprehensiveModel = gson.fromJson(data.getStringExtra(CalculateUtils.ADDITIONAL_INFO_INTENT), CalculateAddOptComprehensiveModel.class);
             }
         }
     }
@@ -144,8 +152,8 @@ public class CalculateActivity extends BaseActivity {
         List<CalculateModel> returnRegion = new ArrayList<>();
 
         returnRegion.add(new CalculateModel("0", getString(R.string.otomate)));
-        returnRegion.add(new CalculateModel("1", getString(R.string.comprehensive)));
-        returnRegion.add(new CalculateModel("2", getString(R.string.total_lost_only)));
+//        returnRegion.add(new CalculateModel("1", getString(R.string.comprehensive)));
+//        returnRegion.add(new CalculateModel("2", getString(R.string.total_lost_only)));
 
         return returnRegion;
     }

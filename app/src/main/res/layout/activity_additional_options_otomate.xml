@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <com.gmg.icalc.CustomViews.CustomFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/add_option_otomate"
+        android:textSize="@dimen/font_large"
+        android:textStyle="bold" />
+
+    <com.gmg.icalc.CustomViews.CustomFontCheckBox
+        android:id="@+id/additional_options_flood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/flood_quake" />
+
+    <!-- Third Party Responsibility -->
+    <com.gmg.icalc.CustomViews.CustomFontCheckBox
+        android:id="@+id/additional_options_tp_CB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/third_party_responsibility_roman"
+        android:textStyle="bold" />
+
+    <!-- Personal accident -->
+    <com.gmg.icalc.CustomViews.CustomFontCheckBox
+        android:id="@+id/additional_options_pa_CB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/personal_accident"
+        android:textStyle="bold" />
+
+
+    <com.gmg.icalc.CustomViews.CustomFontButton
+        android:id="@+id/additional_options_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_medium_height"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_ltgreen100"
+        android:text="@string/confirm" />
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.gmg.icalc;
+package com.gmg.icalc.calculation;
 
 /**
  * Created by KM on 8/21/2017. IC

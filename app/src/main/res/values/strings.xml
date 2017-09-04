@@ -32,6 +32,17 @@
     <string name="area_2">Wilayah 2</string>
     <string name="area_3">Wilayah 3</string>
     <!-- Additional Info -->
+    <string name="otomate_no_add_opt">Otomate tidak memiliki perluasan</string>
+    <string name="add_option_otomate">Perluasan Jaminan OTOMATE</string>
+    <string name="third_party_responsibility">Tanggung Jawab pihak ke 3</string>
+    <string name="third_party_responsibility_roman">Tanggung Jawab pihak III</string>
+    <string name="personal_accident">Personal Accident</string>
+    <string name="flood_quake">Banjir &amp; Gempa 100%</string>
+    <string name="mil_20">20 Juta</string>
+    <string name="mil_30">30 Juta</string>
+    <string name="mil_40">40 Juta</string>
+    <string name="mil_50">50 Juta</string>
+
     <string name="tsfwd">TSFWD (Banjir, Kerusakan akibat air)</string>
     <string name="eqvet">EQVET (Gempa, Tanah longsor, Letusan gunung berapi)</string>
     <string name="srcc">SRCC (Kerusuhan dan huru hara)</string>
@@ -43,6 +54,8 @@
 
     <!-- General -->
     <string name="expand">Expand</string>
+    <string name="confirm">Confirm</string>
+    <string name="standard">Standard</string>
 
     <string name="error_connection">Terjadi gangguan pada internet, silahkan coba lagi</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.gmg.icalc;
+package com.gmg.icalc.calculation;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 
 import com.gmg.icalc.CustomViews.CustomFontTextView;
+import com.gmg.icalc.R;
 
 import java.util.ArrayList;
 import java.util.List;

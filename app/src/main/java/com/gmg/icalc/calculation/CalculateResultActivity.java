@@ -1,9 +1,11 @@
-package com.gmg.icalc;
+package com.gmg.icalc.calculation;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.gmg.icalc.BaseActivity;
 import com.gmg.icalc.CustomViews.CustomFontTextView;
+import com.gmg.icalc.R;
 
 import butterknife.BindView;
 

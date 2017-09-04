@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.gmg.icalc.CustomViews.CustomFontTextView;
+import com.gmg.icalc.calculation.CalculateActivity;
 import com.gmg.icalc.utils.APIConstants;
 import com.gmg.icalc.utils.ViewAnimationUtils;
 

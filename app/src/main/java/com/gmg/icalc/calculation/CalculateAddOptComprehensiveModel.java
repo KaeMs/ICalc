@@ -1,10 +1,10 @@
-package com.gmg.icalc;
+package com.gmg.icalc.calculation;
 
 /**
  * Created by KM on 8/30/2017. IC
  */
 
-public class CalculateAddOptionsModel {
+public class CalculateAddOptComprehensiveModel {
     private boolean TSFWD = false;
     private boolean EQVET = false;
     private boolean SRCC = false;

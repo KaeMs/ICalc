@@ -1,6 +1,6 @@
 package com.gmg.icalc.utils;
 
-import com.gmg.icalc.CalculateAddOptionsModel;
+import com.gmg.icalc.calculation.CalculateAddOptComprehensiveModel;
 
 /**
  * Created by KM on 8/21/2017. IC
@@ -60,7 +60,7 @@ public class CalculateUtils {
         }
     }
 
-    public static String calculate(String vehiclePrice, int insuranceType, CalculateAddOptionsModel additionalOpts){
+    public static String calculate(String vehiclePrice, int insuranceType, CalculateAddOptComprehensiveModel additionalOpts){
         double percentage = 0;
         if (insuranceType == OTOMATE){
             percentage += getOtomate(vehiclePrice);
