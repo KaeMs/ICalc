@@ -5,8 +5,8 @@ package com.gmg.icalc.utils;
  */
 
 public class APIConstants {
-    public static final String API_URL = "http://localhost:8000/";
-    public static final String WEB_URL = "http://www.fastmedrecord.com";
+    public static final String API_URL = "http://www.asuransipremimurah.com";
+    public static final String WEB_URL = "http://www.asuransipremimurah.com";
 
     public static final String LOGIN = "/api/login";
     public static final int connectTimeout = 15;

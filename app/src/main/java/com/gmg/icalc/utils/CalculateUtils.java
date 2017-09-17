@@ -46,7 +46,7 @@ public class CalculateUtils {
     }
 
     private static int getCategory(String vehiclePriceStr){
-        int vehiclePrice = Integer.valueOf(vehiclePriceStr);
+        int vehiclePrice = Integer.valueOf(vehiclePriceStr.replace(".", "").replace(",", ""));
         if (vehiclePrice >= 0 && vehiclePrice < 126000000){
             return 1;
         } else if (vehiclePrice >= 126000000 && vehiclePrice < 200000000){
@@ -62,6 +62,7 @@ public class CalculateUtils {
 
     public static String calculate(String vehiclePrice, int insuranceType, CalculateAddOptComprehensiveModel additionalOpts){
         double percentage = 0;
+        vehiclePrice = vehiclePrice.replace(".", "").replace(",", "");
         if (insuranceType == OTOMATE){
             percentage += getOtomate(vehiclePrice);
         } else if (insuranceType == OTOMATE_SMART){
@@ -75,6 +76,7 @@ public class CalculateUtils {
         if (additionalOpts.isSRCC()) percentage += 0.05;
         if (additionalOpts.isTS()) percentage += 0.05;
 
+        percentage = percentage / 100;
         return String.valueOf(Double.parseDouble(vehiclePrice) * percentage);
     }
 }

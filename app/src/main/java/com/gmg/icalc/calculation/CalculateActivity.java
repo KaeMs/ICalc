@@ -93,7 +93,7 @@ public class CalculateActivity extends BaseActivity {
                                 CalculateUtils.calculate(vehiclePriceET.getText().toString(),
                                 CalculateUtils.OTOMATE, additionalInfo));
                 startActivity(intent);*/
-                Toast.makeText(CalculateActivity.this, CalculateUtils.calculate(vehiclePriceET.getText().toString(),
+                Toast.makeText(CalculateActivity.this, "Rate : " + CalculateUtils.calculate(vehiclePriceET.getText().toString() + " \n" + "Total : ",
                         CalculateUtils.OTOMATE, calculateAddOptComprehensiveModel), Toast.LENGTH_SHORT).show();
             }
         });
