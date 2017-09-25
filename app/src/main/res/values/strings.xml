@@ -17,6 +17,7 @@
     <!-- Calculation -->
     <string name="rp">Rp</string>
     <string name="vehicle_price">Harga Kendaraan</string>
+    <string name="vehicle_price_missing">Harga kendaraan tidak boleh kosong</string>
     <string name="vehicle_category">Kategori Kendaraan</string>
     <string name="insurance_type">Jenis Asuransi</string>
     <string name="vehicle_year">Tahun Kendaraan</string>
@@ -47,6 +48,10 @@
     <string name="eqvet">EQVET (Gempa, Tanah longsor, Letusan gunung berapi)</string>
     <string name="srcc">SRCC (Kerusuhan dan huru hara)</string>
     <string name="ts">TS (Terorisme)</string>
+
+    <!-- Result -->
+    <string name="premi_colon">Premi : %1$,.2f</string>
+    <string name="send_application">Send Application</string>
 
     <string name="calculator">Calculator</string>
 

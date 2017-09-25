@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Spinner;
@@ -88,13 +89,24 @@ public class CalculateActivity extends BaseActivity {
         calculatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(CalculateActivity.this, CalculateResultActivity.class);
-                intent.putExtra(CalculateUtils.CALCULATION_RESULT_INTENT,
-                                CalculateUtils.calculate(vehiclePriceET.getText().toString(),
-                                CalculateUtils.OTOMATE, additionalInfo));
-                startActivity(intent);*/
-                Toast.makeText(CalculateActivity.this, "Rate : " + CalculateUtils.calculate(vehiclePriceET.getText().toString() + " \n" + "Total : ",
-                        CalculateUtils.OTOMATE, calculateAddOptComprehensiveModel), Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(vehiclePriceET.getText().toString())){
+                    Toast.makeText(CalculateActivity.this, getString(R.string.vehicle_price_missing), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                CalculateResultModel calculateResultModel = new CalculateResultModel();
+                calculateResultModel.setVehiclePrice(CalculateUtils.stringToDouble(vehiclePriceET.getText().toString()));
+                calculateResultModel.setVehicleType(categorySpinnerAdapter.getItem(categorySpinner.getSelectedItemPosition()).getName());
+                double premi = CalculateUtils.calculate(vehiclePriceET.getText().toString(),
+                        CalculateUtils.OTOMATE, calculateAddOptComprehensiveModel);
+                calculateResultModel.setPremi(premi);
+
+                Gson gson = new Gson();
+                String calcResExtra = gson.toJson(calculateResultModel);
+
+                Intent intent = new Intent(CalculateActivity.this, CalculateResultActivity.class);
+                intent.putExtra(CalculateResultModel.CALC_RESULT_EXTRA, calcResExtra);
+                startActivity(intent);
             }
         });
 
@@ -164,7 +176,7 @@ public class CalculateActivity extends BaseActivity {
 
         for (int i = 0; i < 8; i++) {
             Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.YEAR, i);
+            calendar.add(Calendar.YEAR, -i);
             returnVehicleYear.add(new CalculateModel(String.valueOf(i), String.valueOf(calendar.get(Calendar.YEAR))));
         }
 

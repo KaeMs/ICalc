@@ -2,6 +2,8 @@ package com.gmg.icalc.utils;
 
 import com.gmg.icalc.calculation.CalculateAddOptComprehensiveModel;
 
+import java.util.Locale;
+
 /**
  * Created by KM on 8/21/2017. IC
  */
@@ -60,7 +62,7 @@ public class CalculateUtils {
         }
     }
 
-    public static String calculate(String vehiclePrice, int insuranceType, CalculateAddOptComprehensiveModel additionalOpts){
+    public static double calculate(String vehiclePrice, int insuranceType, CalculateAddOptComprehensiveModel additionalOpts){
         double percentage = 0;
         vehiclePrice = vehiclePrice.replace(".", "").replace(",", "");
         if (insuranceType == OTOMATE){
@@ -77,6 +79,23 @@ public class CalculateUtils {
         if (additionalOpts.isTS()) percentage += 0.05;
 
         percentage = percentage / 100;
-        return String.valueOf(Double.parseDouble(vehiclePrice) * percentage);
+        return Double.parseDouble(vehiclePrice) * percentage;
+    }
+
+    public static String numberToString(Double d){
+        return String.format(Locale.getDefault(), "%1$,.2f", d);
+    }
+
+    public static String numberToString(int i){
+        return String.valueOf(i);
+    }
+
+    public static Double stringToDouble(String s){
+        s = s.replace("." , "").replace(",", "");
+        return Double.parseDouble(s);
+    }
+
+    public static int stringToInt(String s){
+        return Integer.parseInt(s);
     }
 }
