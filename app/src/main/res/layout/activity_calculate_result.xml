@@ -1,29 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/default_activity_content_padding"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/default_activity_content_padding">
 
-    <com.gmg.icalc.CustomViews.CustomFontTextView
-        android:id="@+id/calculate_result_vehicle_type"
-        android:layout_width="match_parent"
+    <android.support.v7.widget.CardView
+        android:id="@+id/calculate_result_card"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textStyle="bold"/>
+        android:elevation="4dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:contentPadding="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-    <com.gmg.icalc.CustomViews.CustomFontTextView
-        android:id="@+id/calculate_result_total_premi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/default_activity_content_padding">
+
+            <com.gmg.icalc.CustomViews.CustomFontTextView
+                android:id="@+id/calculate_result_vehicle_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.gmg.icalc.CustomViews.CustomFontTextView
+                android:id="@+id/calculate_result_total_premi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calculate_result_vehicle_type" />
+
+            <com.gmg.icalc.CustomViews.CustomFontTextView
+                android:id="@+id/calculate_result_insurance_type_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/insurance_type_colon"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calculate_result_total_premi" />
+
+            <com.gmg.icalc.CustomViews.CustomFontTextView
+                android:id="@+id/calculate_result_insurance_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calculate_result_insurance_type_txt" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
 
     <com.gmg.icalc.CustomViews.CustomFontButton
         android:id="@+id/calculate_result_send_application"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/btn_medium_height"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/button_ltgreen100"
         android:text="@string/send_application"
-        android:visibility="gone" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
+

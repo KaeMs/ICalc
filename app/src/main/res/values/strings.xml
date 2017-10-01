@@ -20,6 +20,7 @@
     <string name="vehicle_price_missing">Harga kendaraan tidak boleh kosong</string>
     <string name="vehicle_category">Kategori Kendaraan</string>
     <string name="insurance_type">Jenis Asuransi</string>
+    <string name="insurance_type_colon">Jenis Asuransi :</string>
     <string name="vehicle_year">Tahun Kendaraan</string>
     <string name="region">Wilayah</string>
     <string name="additional_options">Perluasan</string>
@@ -51,6 +52,7 @@
 
     <!-- Result -->
     <string name="premi_colon"><b>Premi :</b> %1$,.2f</string>
+    <string name="expand">Expand</string>
     <string name="send_application">Send Application</string>
 
     <string name="calculator">Calculator</string>

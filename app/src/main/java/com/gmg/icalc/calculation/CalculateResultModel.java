@@ -8,8 +8,9 @@ public class CalculateResultModel {
     private String vehicleType;
     private double vehiclePrice;
     private double premi;
-    public static final String CALC_RESULT_EXTRA = "CALC_RESULT_EXTRA";
+    private String insuranceType;
 
+    public static final String CALC_RESULT_EXTRA = "CALC_RESULT_EXTRA";
 
     public String getVehicleType() {
         return vehicleType;
@@ -33,5 +34,13 @@ public class CalculateResultModel {
 
     public void setPremi(double premi) {
         this.premi = premi;
+    }
+
+    public String getInsuranceType() {
+        return insuranceType;
+    }
+
+    public void setInsuranceType(String insuranceType) {
+        this.insuranceType = insuranceType;
     }
 }

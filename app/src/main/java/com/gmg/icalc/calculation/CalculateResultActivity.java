@@ -20,6 +20,8 @@ public class CalculateResultActivity extends BaseActivity {
     CustomFontTextView vehicleType;
     @BindView(R.id.calculate_result_total_premi)
     CustomFontTextView premi;
+    @BindView(R.id.calculate_result_insurance_type)
+    CustomFontTextView insuranceType;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,5 +33,6 @@ public class CalculateResultActivity extends BaseActivity {
 
         vehicleType.setText(calculateResultModel.getVehicleType());
         premi.setText(getString(R.string.premi_colon, calculateResultModel.getPremi()));
+        insuranceType.setText(calculateResultModel.getInsuranceType());
     }
 }

@@ -97,6 +97,7 @@ public class CalculateActivity extends BaseActivity {
                 CalculateResultModel calculateResultModel = new CalculateResultModel();
                 calculateResultModel.setVehiclePrice(CalculateUtils.stringToDouble(vehiclePriceET.getText().toString()));
                 calculateResultModel.setVehicleType(categorySpinnerAdapter.getItem(categorySpinner.getSelectedItemPosition()).getName());
+                calculateResultModel.setInsuranceType(insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
                 double premi = CalculateUtils.calculate(vehiclePriceET.getText().toString(),
                         CalculateUtils.OTOMATE, calculateAddOptComprehensiveModel);
                 calculateResultModel.setPremi(premi);
