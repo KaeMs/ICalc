@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightGreen500"
@@ -21,7 +22,8 @@
             android:id="@+id/login_email_wrapper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="300dp">
+            android:minWidth="300dp"
+            app:hintTextAppearance="@style/AppTheme.TilHintStyle">
 
             <com.gmg.icalc.CustomViews.CustomFontEditText
                 android:id="@+id/login_email"
@@ -38,7 +40,9 @@
             android:id="@+id/login_password_wrapper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="300dp">
+            app:passwordToggleEnabled="true"
+            android:minWidth="300dp"
+            app:hintTextAppearance="@style/AppTheme.TilHintStyle">
 
             <com.gmg.icalc.CustomViews.CustomFontEditText
                 android:id="@+id/login_pasword"
@@ -56,8 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_large_height"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_ltgreen500"
-            android:text="@string/login"/>
+            android:background="@drawable/button_white"
+            android:textColor="@color/black"
+            android:text="@string/login" />
 
     </LinearLayout>
 

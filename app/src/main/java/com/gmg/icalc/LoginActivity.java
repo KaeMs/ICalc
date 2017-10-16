@@ -1,7 +1,9 @@
 package com.gmg.icalc;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +14,7 @@ import com.gmg.icalc.CustomViews.CustomFontEditText;
 import com.gmg.icalc.utils.GeneralUtils;
 
 import butterknife.BindView;
+import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * Created by Kevin Murvie on 8/28/2017. IC
@@ -30,6 +33,14 @@ public class LoginActivity extends BaseActivity implements LoginAPIIntf {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        /*if (SharedPreferenceUtilities.getUserId(this) != null){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }*/
+
+        EasyPermissions.requestPermissions(this, getString(R.string.app_needs_phone_state), RequestCodeList.READ_PHONE_STATE, Manifest.permission.READ_PHONE_STATE);
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,7 +50,8 @@ public class LoginActivity extends BaseActivity implements LoginAPIIntf {
                     LoginAPI loginAPI = new LoginAPI();
                     loginAPI.email = email.getText().toString();
                     loginAPI.password = password.getText().toString();
-                    loginAPI.device_imei = GeneralUtils.getImei(LoginActivity.this);
+//                    loginAPI.device_imei = GeneralUtils.getImei(LoginActivity.this);
+                    loginAPI.device_imei = "IMEI123";
 
                     LoginAPIFunc loginAPIFunc = new LoginAPIFunc(LoginActivity.this, LoginActivity.this);
                     loginAPIFunc.execute(loginAPI);
@@ -72,5 +84,11 @@ public class LoginActivity extends BaseActivity implements LoginAPIIntf {
         } else {
             Toast.makeText(this, getString(R.string.error_connection), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 }

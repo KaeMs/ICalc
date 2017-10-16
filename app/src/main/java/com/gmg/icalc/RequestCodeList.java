@@ -19,6 +19,7 @@ public class RequestCodeList {
     public static final int LABRESULT_CREATE = 2700;
     public static final int LABRESULT_EDIT = 2701;
     public static final int MISC_EDIT = 2801;
+    public static final int READ_PHONE_STATE = 190;
 
     public static final int forceLogout = 9999;
 }

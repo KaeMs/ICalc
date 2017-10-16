@@ -13,6 +13,7 @@
     <string name="login">Login</string>
     <string name="complete_information_required">Mohon melengkapi informasi login anda</string>
     <string name="logging_in">Mohon tunggu</string>
+    <string name="app_needs_phone_state">App memerlukan ijin untuk mendapatkan informasi smartphone</string>
 
     <!-- Calculation -->
     <string name="rp">Rp</string>

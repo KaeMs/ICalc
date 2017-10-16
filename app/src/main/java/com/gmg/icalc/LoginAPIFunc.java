@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 
 import com.gmg.icalc.utils.APIConstants;
+import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
 
@@ -65,6 +66,8 @@ public class LoginAPIFunc extends AsyncTask<LoginAPI, Integer, LoginAPIResult> {
                     .build();
 
             Response response = client.newCall(request).execute();
+            String responseStr = APIUtils.getResponse(context, response.code(), response.body().string());
+            loginAPIResult = new Gson().fromJson(responseStr, LoginAPIResult.class);
             loginAPIResult.status_code = response.code();
             response.body().close();
         } catch (Exception ex) {

@@ -37,6 +37,8 @@ public class MainActivity extends BaseActivity implements AppBarLayout.OnOffsetC
     AppBarLayout appBarLayout;
     @BindView(R.id.main_name_wrapper)
     LinearLayout nameWrapper;
+    @BindView(R.id.main_name)
+    CustomFontTextView name;
     @BindView(R.id.main_name_frame_wrapper)
     FrameLayout nameFrameWrapper;
     // Otomate
@@ -62,6 +64,9 @@ public class MainActivity extends BaseActivity implements AppBarLayout.OnOffsetC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        name.setText(SharedPreferenceUtilities.getFromSessionSP(this, SharedPreferenceUtilities.USER_FIRST_NAME));
+        toolbarTitle.setText(SharedPreferenceUtilities.getFromSessionSP(this, SharedPreferenceUtilities.USER_FIRST_NAME));
 
         otomateView.setOnClickListener(new View.OnClickListener() {
             @Override

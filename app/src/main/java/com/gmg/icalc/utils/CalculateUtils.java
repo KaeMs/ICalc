@@ -80,8 +80,8 @@ public class CalculateUtils {
         if (additionalOpts.isSRCC()) percentage += 0.05;
         if (additionalOpts.isTS()) percentage += 0.05;
 
-        percentage = percentage / 100;
         premiModel.setRate(percentage);
+        percentage = percentage / 100;
         premiModel.setPremi(Double.parseDouble(vehiclePrice) * percentage);
         return premiModel;
     }
