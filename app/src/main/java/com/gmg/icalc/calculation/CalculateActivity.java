@@ -3,6 +3,7 @@ package com.gmg.icalc.calculation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -14,6 +15,7 @@ import com.gmg.icalc.BaseActivity;
 import com.gmg.icalc.CustomViews.CustomFontButton;
 import com.gmg.icalc.CustomViews.CustomFontEditText;
 import com.gmg.icalc.R;
+import com.gmg.icalc.SharedPreferenceUtilities;
 import com.gmg.icalc.utils.CalculateUtils;
 import com.google.gson.Gson;
 
@@ -33,6 +35,14 @@ public class CalculateActivity extends BaseActivity {
 
     @BindView(R.id.calculate_vehicle_price)
     CustomFontEditText vehiclePriceET;
+    @BindView(R.id.calculate_vehicle_manufacturer_til)
+    TextInputLayout vehicleManufacturerTil;
+    @BindView(R.id.calculate_vehicle_manufacturer_et)
+    CustomFontEditText vehicleManufacturerET;
+    @BindView(R.id.calculate_prospect_til)
+    TextInputLayout prospectTil;
+    @BindView(R.id.calculate_prospect_et)
+    CustomFontEditText prospectET;
     @BindView(R.id.calculate_vehicle_category_spinner)
     Spinner categorySpinner;
     CalculateSpinnerAdapter categorySpinnerAdapter;
@@ -70,6 +80,46 @@ public class CalculateActivity extends BaseActivity {
 
         calculateAddOptComprehensiveModel = new CalculateAddOptComprehensiveModel();
 
+        vehicleManufacturerET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                    if (editable.length() == 0)
+                        vehicleManufacturerTil.setError(getString(R.string.vehicle_manufacturer_missing));
+                    else
+                        vehicleManufacturerTil.setError(null);
+            }
+        });
+
+        prospectET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == 0)
+                    prospectTil.setError(getString(R.string.insured_name_missing));
+                else
+                    prospectTil.setError(null);
+            }
+        });
+
         addititionalOptsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,13 +144,29 @@ public class CalculateActivity extends BaseActivity {
                     return;
                 }
 
-                CalculateResultModel calculateResultModel = new CalculateResultModel();
-                calculateResultModel.setVehiclePrice(CalculateUtils.stringToDouble(vehiclePriceET.getText().toString()));
-                calculateResultModel.setVehicleType(categorySpinnerAdapter.getItem(categorySpinner.getSelectedItemPosition()).getName());
-                calculateResultModel.setInsuranceType(insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
-                double premi = CalculateUtils.calculate(vehiclePriceET.getText().toString(),
+                if (TextUtils.isEmpty(vehicleManufacturerET.getText().toString()) ||
+                        TextUtils.isEmpty(prospectET.getText().toString())){
+                    return;
+                }
+
+                PremiModel premiModel = CalculateUtils.calculate(vehiclePriceET.getText().toString(),
                         CalculateUtils.OTOMATE, calculateAddOptComprehensiveModel);
-                calculateResultModel.setPremi(premi);
+
+                CalculateResultModel calculateResultModel = new CalculateResultModel();
+                calculateResultModel.setNama_tertanggung(prospectET.getText().toString());
+                calculateResultModel.setKategori_kendaraan(categorySpinnerAdapter.getItem(categorySpinner.getSelectedItemPosition()).getName());
+                calculateResultModel.setJenis_asuransi(insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
+                calculateResultModel.setTahun_kendaraan(vehicleYearSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
+                String agentName = SharedPreferenceUtilities.getFromSessionSP(CalculateActivity.this, SharedPreferenceUtilities.USER_FIRST_NAME) + " " +
+                        SharedPreferenceUtilities.getFromSessionSP(CalculateActivity.this, SharedPreferenceUtilities.USER_LAST_NAME);
+                calculateResultModel.setAgent_name(agentName);
+                calculateResultModel.setNilai_pertanggungan(CalculateUtils.stringToDouble(vehiclePriceET.getText().toString()));
+                calculateResultModel.setPremi(premiModel.getPremi());
+                calculateResultModel.setRate(premiModel.getRate());
+                calculateResultModel.setThird_party("");
+                calculateResultModel.setPersonal_accident("");
+                calculateResultModel.setMerek_kendaraan(vehicleManufacturerET.getText().toString());
+                calculateResultModel.setUser_email("");
 
                 Gson gson = new Gson();
                 String calcResExtra = gson.toJson(calculateResultModel);

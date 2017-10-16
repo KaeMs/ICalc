@@ -52,20 +52,20 @@ public class LoginActivity extends BaseActivity implements LoginAPIIntf {
     public void onFinishLogin(LoginAPIResult loginAPIResult) {
         if (loginAPIResult.status_code == 200){
             SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.id);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.email);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.first_name);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.last_name);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.agency);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.date_join);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.date_expired);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.photo);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.phone);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.license);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.device_imei);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.status);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.created_at);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.updated_at);
-            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_ID, loginAPIResult.api_token);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_EMAIL, loginAPIResult.email);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_FIRST_NAME, loginAPIResult.first_name);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_LAST_NAME, loginAPIResult.last_name);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_AGENCY, loginAPIResult.agency);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_DATE_JOIN, loginAPIResult.date_join);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_DATE_EXPIRED, loginAPIResult.date_expired);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_PHOTO, loginAPIResult.photo);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_PHONE, loginAPIResult.phone);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_LICENSE, loginAPIResult.license);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_DEVICE_IMEI, loginAPIResult.device_imei);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_STATUS, loginAPIResult.status);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_CREATED_AT, loginAPIResult.created_at);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_UPDATED_AT, loginAPIResult.updated_at);
+            SharedPreferenceUtilities.setUserInformation(this, SharedPreferenceUtilities.USER_API_TOKEN, loginAPIResult.api_token);
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();

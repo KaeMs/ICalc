@@ -1,6 +1,7 @@
 package com.gmg.icalc.utils;
 
 import com.gmg.icalc.calculation.CalculateAddOptComprehensiveModel;
+import com.gmg.icalc.calculation.PremiModel;
 
 import java.util.Locale;
 
@@ -62,7 +63,8 @@ public class CalculateUtils {
         }
     }
 
-    public static double calculate(String vehiclePrice, int insuranceType, CalculateAddOptComprehensiveModel additionalOpts){
+    public static PremiModel calculate(String vehiclePrice, int insuranceType, CalculateAddOptComprehensiveModel additionalOpts){
+        PremiModel premiModel = new PremiModel();
         double percentage = 0;
         vehiclePrice = vehiclePrice.replace(".", "").replace(",", "");
         if (insuranceType == OTOMATE){
@@ -79,7 +81,9 @@ public class CalculateUtils {
         if (additionalOpts.isTS()) percentage += 0.05;
 
         percentage = percentage / 100;
-        return Double.parseDouble(vehiclePrice) * percentage;
+        premiModel.setRate(percentage);
+        premiModel.setPremi(Double.parseDouble(vehiclePrice) * percentage);
+        return premiModel;
     }
 
     public static String numberToString(Double d){

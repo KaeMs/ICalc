@@ -16,8 +16,12 @@
 
     <!-- Calculation -->
     <string name="rp">Rp</string>
+    <string name="vehicle_manufacturer">Merek kendaraan</string>
+    <string name="insured_name">Nama tertanggung</string>
+    <string name="insured_name_missing">Nama tertanggung harus diisi</string>
+    <string name="vehicle_manufacturer_missing">Merek kendaraan harus diisi</string>
     <string name="vehicle_price">Harga Kendaraan</string>
-    <string name="vehicle_price_missing">Harga kendaraan tidak boleh kosong</string>
+    <string name="vehicle_price_missing">Harga kendaraan harus diisi</string>
     <string name="vehicle_category">Kategori Kendaraan</string>
     <string name="insurance_type">Jenis Asuransi</string>
     <string name="insurance_type_colon">Jenis Asuransi :</string>
@@ -52,7 +56,10 @@
 
     <!-- Result -->
     <string name="premi_colon"><b>Premi :</b> %1$,.2f</string>
-    <string name="send_application">Send Application</string>
+    <string name="send_application">Kirim aplikasi</string>
+    <string name="sending_application">Mengirim aplikasi…</string>>
+    <string name="application_sent">Aplikasi telah terkirim</string>
+    <string name="email_missing">Mohon masukkan email anda untuk pengiriman dokumen aplikasi</string>
 
     <string name="calculator">Calculator</string>
 
