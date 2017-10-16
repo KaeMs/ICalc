@@ -52,7 +52,6 @@
 
     <!-- Result -->
     <string name="premi_colon"><b>Premi :</b> %1$,.2f</string>
-    <string name="expand">Expand</string>
     <string name="send_application">Send Application</string>
 
     <string name="calculator">Calculator</string>
