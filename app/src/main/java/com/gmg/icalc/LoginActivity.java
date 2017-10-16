@@ -31,13 +31,14 @@ public class LoginActivity extends BaseActivity implements LoginAPIIntf {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
-        /*if (SharedPreferenceUtilities.getUserId(this) != null){
+        if (SharedPreferenceUtilities.getUserId(this) != null){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
-        }*/
+        }
+
+        setContentView(R.layout.activity_login);
 
         EasyPermissions.requestPermissions(this, getString(R.string.app_needs_phone_state), RequestCodeList.READ_PHONE_STATE, Manifest.permission.READ_PHONE_STATE);
 
