@@ -1,4 +1,4 @@
-package com.gmg.icalc.calculation;
+package com.gmg.icalc.car;
 
 /**
  * Created by GMG-Developer on 9/4/2017.

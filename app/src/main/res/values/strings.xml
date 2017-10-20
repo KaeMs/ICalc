@@ -3,9 +3,10 @@
 
     <!-- Main -->
     <string name="name">Name</string>
-    <string name="otomate">Otomate</string>
+    <string name="otomate">OTM</string>
     <string name="comprehensive">Comprehensive</string>
     <string name="total_lost_only">Total Lost Only</string>
+    <string name="icon_transition">icon_transition</string>
 
     <!-- Login -->
     <string name="email">E-Mail</string>
@@ -16,6 +17,7 @@
     <string name="app_needs_phone_state">App memerlukan ijin untuk mendapatkan informasi smartphone</string>
 
     <!-- Calculation -->
+    <string name="vehicle">Vehicle</string>
     <string name="rp">Rp</string>
     <string name="vehicle_manufacturer">Merek kendaraan</string>
     <string name="insured_name">Nama tertanggung</string>

@@ -1,4 +1,4 @@
-package com.gmg.icalc.calculation;
+package com.gmg.icalc.car;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.view.View;
 import com.gmg.icalc.BaseActivity;
 import com.gmg.icalc.CustomViews.CustomFontButton;
 import com.gmg.icalc.CustomViews.CustomFontCheckBox;
-import com.gmg.icalc.CustomViews.CustomFontRadioButton;
 import com.gmg.icalc.R;
 import com.gmg.icalc.utils.CalculateUtils;
 import com.google.gson.Gson;

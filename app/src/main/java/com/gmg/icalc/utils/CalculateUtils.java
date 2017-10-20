@@ -1,7 +1,7 @@
 package com.gmg.icalc.utils;
 
-import com.gmg.icalc.calculation.CalculateAddOptComprehensiveModel;
-import com.gmg.icalc.calculation.PremiModel;
+import com.gmg.icalc.car.CalculateAddOptComprehensiveModel;
+import com.gmg.icalc.car.PremiModel;
 
 import java.util.Locale;
 

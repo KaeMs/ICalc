@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gmg.icalc.CustomViews.SquareLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="@drawable/button_ltgreen100">
+
+    <ImageView
+        android:id="@+id/base_menu_item_icon"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="0dp"
+        android:scaleType="centerInside"
+        android:layout_weight="0.6"
+        android:transitionName="@string/icon_transition" />
+
+    <com.gmg.icalc.CustomViews.CustomFontTextView
+        android:id="@+id/base_menu_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="@dimen/font_small"
+        app:autoSizeMaxTextSize="@dimen/font_medium"
+        android:gravity="center_horizontal"/>
+
+</com.gmg.icalc.CustomViews.SquareLinearLayout>

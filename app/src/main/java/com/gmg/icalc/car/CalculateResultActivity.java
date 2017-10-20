@@ -1,4 +1,4 @@
-package com.gmg.icalc.calculation;
+package com.gmg.icalc.car;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import com.gmg.icalc.CustomViews.CustomFontTextView;
 import com.gmg.icalc.MainActivity;
 import com.gmg.icalc.R;
 import com.gmg.icalc.ResponseAPI;
-import com.gmg.icalc.calculation.api.FuncSendApplication;
+import com.gmg.icalc.car.api.FuncSendApplication;
 import com.google.gson.Gson;
 
 import butterknife.BindView;

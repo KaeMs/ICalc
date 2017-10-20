@@ -19,13 +19,13 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".calculation.CalculateActivity"
+        <activity android:name=".car.CalculateActivity"
             android:theme="@style/AppTheme.CalculateInsuranceStyle"/>
-        <activity android:name=".calculation.CalculateAdditionalOptionsComprehensiveActivity"
+        <activity android:name=".car.CalculateAdditionalOptionsComprehensiveActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".calculation.CalculateResultActivity"
+        <activity android:name=".car.CalculateResultActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
@@ -39,7 +39,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             </activity>
-        <activity android:name=".calculation.CalculateAdditionalOptionsOtomateActivity" />
+        <activity android:name=".car.CalculateAdditionalOptionsOtomateActivity" />
+        <activity android:name=".car.CarMainActivity" />
     </application>
 
 </manifest>

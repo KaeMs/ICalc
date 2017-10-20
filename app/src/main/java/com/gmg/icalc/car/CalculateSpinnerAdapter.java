@@ -1,4 +1,4 @@
-package com.gmg.icalc.calculation;
+package com.gmg.icalc.car;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;

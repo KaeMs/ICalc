@@ -1,4 +1,4 @@
-package com.gmg.icalc.calculation.api;
+package com.gmg.icalc.car.api;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -8,8 +8,7 @@ import android.support.v4.content.ContextCompat;
 import com.gmg.icalc.APIUtils;
 import com.gmg.icalc.R;
 import com.gmg.icalc.ResponseAPI;
-import com.gmg.icalc.calculation.CalculateResultModel;
-import com.gmg.icalc.calculation.PremiModel;
+import com.gmg.icalc.car.CalculateResultModel;
 import com.gmg.icalc.utils.APIConstants;
 
 import java.util.concurrent.TimeUnit;

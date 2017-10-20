@@ -63,6 +63,7 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:elevation="10dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -70,14 +71,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.gmg.icalc.CustomViews.CustomFontTextView
+            <!--<com.gmg.icalc.CustomViews.CustomFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:padding="10dp"
                 android:text="@string/placeholder_ipsum" />
 
-            <!-- Otomate -->
+            &lt;!&ndash; Otomate &ndash;&gt;
             <LinearLayout
                 android:id="@+id/main_otomate"
                 android:layout_width="match_parent"
@@ -115,7 +116,7 @@
                 android:textColor="@color/white"
                 android:visibility="gone" />
 
-            <!-- Comprehensive -->
+            &lt;!&ndash; Comprehensive &ndash;&gt;
             <LinearLayout
                 android:id="@+id/main_comprehensive"
                 android:layout_width="match_parent"
@@ -153,7 +154,7 @@
                 android:textColor="@color/white"
                 android:visibility="gone" />
 
-            <!-- Total Lost Only -->
+            &lt;!&ndash; Total Lost Only &ndash;&gt;
             <LinearLayout
                 android:id="@+id/main_total_lost"
                 android:layout_width="match_parent"
@@ -189,7 +190,14 @@
                 android:padding="10dp"
                 android:text="@string/placeholder_ipsum"
                 android:textColor="@color/white"
-                android:visibility="gone" />
+                android:visibility="gone" />-->
+
+            <GridView
+                android:id="@+id/main_gridview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:stretchMode="columnWidth"
+                android:numColumns="3"/>
 
         </LinearLayout>
 
@@ -219,6 +227,7 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
+
     </android.support.v7.widget.Toolbar>
 
     <ImageView
@@ -234,7 +243,7 @@
         app:startToolbarPosition="2dp"
         app:startXPosition="2dp" />
 
-    <android.support.design.widget.FloatingActionButton
+    <!--<android.support.design.widget.FloatingActionButton
         android:id="@+id/main_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -243,6 +252,6 @@
         android:scaleType="centerInside"
         android:src="@drawable/ic_info_outline_white_48dp"
         app:fabSize="auto"
-        tools:ignore="RtlHardcoded" />
+        tools:ignore="RtlHardcoded" />-->
 
 </android.support.design.widget.CoordinatorLayout>
