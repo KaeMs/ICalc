@@ -41,8 +41,8 @@
     <string name="area_2">Wilayah 2</string>
     <string name="area_3">Wilayah 3</string>
     <!-- Additional Info -->
-    <string name="otomate_no_add_opt">Otomate tidak memiliki perluasan</string>
-    <string name="add_option_otomate">Perluasan Jaminan OTOMATE</string>
+    <string name="otomate_no_add_opt">OTM tidak memiliki perluasan</string>
+    <string name="add_option_otomate">Perluasan Jaminan OTM</string>
     <string name="third_party_responsibility">Tanggung Jawab pihak ke 3</string>
     <string name="third_party_responsibility_roman">Tanggung Jawab pihak III</string>
     <string name="personal_accident">Personal Accident</string>

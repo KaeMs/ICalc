@@ -6,15 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/base_menu_tablayout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/base_menu_pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/base_menu_tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:tabTextColor="@color/textcolor_white_accent"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/base_menu_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/base_menu_fab"

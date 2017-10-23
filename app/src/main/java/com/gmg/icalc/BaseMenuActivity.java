@@ -70,6 +70,7 @@ public class BaseMenuActivity extends BaseActivity {
             if (tab != null){
                 tabLayout.getTabAt(fragments.size() - 1).setIcon(ContextCompat.getDrawable(BaseMenuActivity.this, pagerFragmentModel.getIcon()));
             }
+            notifyDataSetChanged();
         }
 
         public void addFragments(List<PagerFragmentModel> fragmentModels) {
@@ -81,6 +82,7 @@ public class BaseMenuActivity extends BaseActivity {
                 if (tab != null){
                     tabLayout.getTabAt(fragments.size() - 1).setIcon(ContextCompat.getDrawable(BaseMenuActivity.this, item.getIcon()));
                 }
+                notifyDataSetChanged();
             }
         }
     }
