@@ -142,9 +142,9 @@ public class MainActivity extends BaseActivity implements AppBarLayout.OnOffsetC
         String avatarPath = SharedPreferenceUtilities.getFromSessionSP(this, SharedPreferenceUtilities.USER_PHOTO);
 
         Glide.with(this)
-                .load(APIConstants.WEB_URL + avatarPath)
+                .load(avatarPath)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .fitCenter()
+                .centerCrop()
                 .skipMemoryCache(true)
                 .placeholder(MediaUtils.image_placeholder_black)
                 .error(MediaUtils.image_error_black)

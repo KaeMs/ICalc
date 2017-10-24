@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.gmg.icalc.BaseActivity;
 import com.gmg.icalc.CustomViews.CustomFontButton;
+import com.gmg.icalc.CustomViews.CustomFontCheckBox;
 import com.gmg.icalc.CustomViews.CustomFontRadioButton;
 import com.gmg.icalc.R;
 import com.gmg.icalc.utils.CalculateUtils;
@@ -21,13 +22,13 @@ import butterknife.BindView;
 public class CalculateAdditionalOptionsComprehensiveActivity extends BaseActivity {
 
     @BindView(R.id.additional_options_tsfwd)
-    CustomFontRadioButton tsfwdCB;
+    CustomFontCheckBox tsfwdCB;
     @BindView(R.id.additional_options_eqvet)
-    CustomFontRadioButton eqvetCB;
+    CustomFontCheckBox eqvetCB;
     @BindView(R.id.additional_options_srcc)
-    CustomFontRadioButton srccCB;
+    CustomFontCheckBox srccCB;
     @BindView(R.id.additional_options_ts)
-    CustomFontRadioButton tsCB;
+    CustomFontCheckBox tsCB;
 
     @BindView(R.id.additional_options_confirm)
     CustomFontButton confirmBtn;

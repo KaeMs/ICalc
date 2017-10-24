@@ -9,6 +9,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.widget.ImageView;
+
+import com.gmg.icalc.CustomViews.CustomFontTextView;
+import com.gmg.icalc.utils.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +24,10 @@ import butterknife.BindView;
  */
 
 public class BaseMenuActivity extends BaseActivity {
+    @BindView(R.id.base_menu_toolbar_avatar)
+    public ImageView avatar;
+    @BindView(R.id.base_menu_toolbar_title)
+    public CustomFontTextView title;
     @BindView(R.id.base_menu_tablayout)
     public TabLayout tabLayout;
     @BindView(R.id.base_menu_pager)
@@ -36,6 +44,8 @@ public class BaseMenuActivity extends BaseActivity {
         pagerAdapter = new BaseMenuPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(pager);
+
+        ViewUtils.setAvatarToView(this, avatar);
     }
 
     public class BaseMenuPagerAdapter extends FragmentStatePagerAdapter {

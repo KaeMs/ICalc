@@ -17,7 +17,8 @@
     <string name="app_needs_phone_state">App memerlukan ijin untuk mendapatkan informasi smartphone</string>
 
     <!-- Calculation -->
-    <string name="vehicle">Vehicle</string>
+    <string name="vehicle">Kendaraan</string>
+    <string name="vehicle_insurance_calculation">Kalkulasi asuransi kendaraan</string>
     <string name="rp">Rp</string>
     <string name="vehicle_manufacturer">Merek kendaraan</string>
     <string name="insured_name">Nama tertanggung</string>

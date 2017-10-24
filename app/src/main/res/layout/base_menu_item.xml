@@ -7,7 +7,7 @@
     android:padding="10dp"
     android:orientation="vertical"
     android:weightSum="1"
-    android:background="@drawable/button_ltgreen100">
+    android:background="?attr/selectableItemBackground">
 
     <ImageView
         android:id="@+id/base_menu_item_icon"

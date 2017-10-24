@@ -12,10 +12,18 @@
         android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="@dimen/image_final_width"
-            android:layout_height="@dimen/image_final_width"
-            android:src="@drawable/ic_info_outline_white_48dp"
-            android:layout_marginLeft="15dp"/>
+            android:id="@+id/calculate_vehicle_avatar"
+            android:layout_width="@dimen/toolbar_height"
+            android:layout_height="@dimen/toolbar_height"
+            android:src="@drawable/ic_info_outline_white_48dp" />
+
+        <com.gmg.icalc.CustomViews.CustomFontTextView
+            android:id="@+id/calculate_vehicle_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_large" />
 
     </LinearLayout>
 
@@ -32,7 +40,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
@@ -42,13 +50,21 @@
                     android:layout_weight="0.1"
                     android:text="@string/rp" />
 
-                <com.gmg.icalc.CustomViews.CustomFontEditText
-                    android:id="@+id/calculate_vehicle_price"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/calculate_vehicle_price_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.75"
-                    android:hint="@string/vehicle_price"
-                    android:inputType="number" />
+                    app:errorEnabled="true">
+
+                    <com.gmg.icalc.CustomViews.CustomFontEditText
+                        android:id="@+id/calculate_vehicle_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/vehicle_price"
+                        android:inputType="number" />
+                </android.support.design.widget.TextInputLayout>
+
 
             </LinearLayout>
 

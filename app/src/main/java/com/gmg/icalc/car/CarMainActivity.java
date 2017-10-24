@@ -5,11 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.gmg.icalc.BaseActivity;
 import com.gmg.icalc.BaseMenuActivity;
 import com.gmg.icalc.MainActivity;
+import com.gmg.icalc.MediaUtils;
 import com.gmg.icalc.PagerFragmentModel;
 import com.gmg.icalc.R;
+import com.gmg.icalc.SharedPreferenceUtilities;
+import com.gmg.icalc.utils.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,5 +57,7 @@ public class CarMainActivity extends BaseMenuActivity {
                 startActivity(intent);
             }
         });
+
+        title.setText(getString(R.string.vehicle));
     }
 }

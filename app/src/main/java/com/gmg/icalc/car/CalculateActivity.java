@@ -8,15 +8,21 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.gmg.icalc.BaseActivity;
 import com.gmg.icalc.CustomViews.CustomFontButton;
 import com.gmg.icalc.CustomViews.CustomFontEditText;
+import com.gmg.icalc.CustomViews.CustomFontTextView;
 import com.gmg.icalc.R;
 import com.gmg.icalc.SharedPreferenceUtilities;
 import com.gmg.icalc.utils.CalculateUtils;
+import com.gmg.icalc.utils.ViewUtils;
 import com.google.gson.Gson;
 
 import java.math.BigInteger;
@@ -33,6 +39,10 @@ import butterknife.BindView;
 
 public class CalculateActivity extends BaseActivity {
 
+    @BindView(R.id.calculate_vehicle_avatar)
+    ImageView avatar;
+    @BindView(R.id.calculate_vehicle_title)
+    CustomFontTextView title;
     @BindView(R.id.calculate_vehicle_price)
     CustomFontEditText vehiclePriceET;
     @BindView(R.id.calculate_vehicle_manufacturer_til)
@@ -68,6 +78,15 @@ public class CalculateActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate);
+
+        ViewUtils.setAvatarToView(this, avatar);
+
+        title.setText(getString(R.string.vehicle));
+
+        final AwesomeValidation mAwesomeValidation = new AwesomeValidation(ValidationStyle.TEXT_INPUT_LAYOUT);
+        mAwesomeValidation.addValidation(this, R.id.calculate_vehicle_price_til, RegexTemplate.NOT_EMPTY, R.string.vehicle_price_missing);
+        mAwesomeValidation.addValidation(this, R.id.calculate_vehicle_manufacturer_til, RegexTemplate.NOT_EMPTY, R.string.vehicle_manufacturer_missing);
+        mAwesomeValidation.addValidation(this, R.id.calculate_prospect_til, RegexTemplate.NOT_EMPTY, R.string.insured_name_missing);
 
         categorySpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getCategory());
         categorySpinner.setAdapter(categorySpinnerAdapter);
@@ -139,41 +158,33 @@ public class CalculateActivity extends BaseActivity {
         calculatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TextUtils.isEmpty(vehiclePriceET.getText().toString())){
-                    Toast.makeText(CalculateActivity.this, getString(R.string.vehicle_price_missing), Toast.LENGTH_SHORT).show();
-                    return;
+                if (mAwesomeValidation.validate()){
+                    PremiModel premiModel = CalculateUtils.calculate(vehiclePriceET.getText().toString(),
+                            Integer.valueOf(insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getId()), calculateAddOptComprehensiveModel);
+
+                    CalculateResultModel calculateResultModel = new CalculateResultModel();
+                    calculateResultModel.setNama_tertanggung(prospectET.getText().toString());
+                    calculateResultModel.setKategori_kendaraan(categorySpinnerAdapter.getItem(categorySpinner.getSelectedItemPosition()).getName());
+                    calculateResultModel.setJenis_asuransi(insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
+                    calculateResultModel.setTahun_kendaraan(vehicleYearSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
+                    String agentName = SharedPreferenceUtilities.getFromSessionSP(CalculateActivity.this, SharedPreferenceUtilities.USER_FIRST_NAME) + " " +
+                            SharedPreferenceUtilities.getFromSessionSP(CalculateActivity.this, SharedPreferenceUtilities.USER_LAST_NAME);
+                    calculateResultModel.setAgent_name(agentName);
+                    calculateResultModel.setNilai_pertanggungan(CalculateUtils.stringToDouble(vehiclePriceET.getText().toString()));
+                    calculateResultModel.setPremi(premiModel.getPremi());
+                    calculateResultModel.setRate(premiModel.getRate());
+                    calculateResultModel.setThird_party("");
+                    calculateResultModel.setPersonal_accident("");
+                    calculateResultModel.setMerek_kendaraan(vehicleManufacturerET.getText().toString());
+                    calculateResultModel.setUser_email("");
+
+                    Gson gson = new Gson();
+                    String calcResExtra = gson.toJson(calculateResultModel);
+
+                    Intent intent = new Intent(CalculateActivity.this, CalculateResultActivity.class);
+                    intent.putExtra(CalculateResultModel.CALC_RESULT_EXTRA, calcResExtra);
+                    startActivity(intent);
                 }
-
-                if (TextUtils.isEmpty(vehicleManufacturerET.getText().toString()) ||
-                        TextUtils.isEmpty(prospectET.getText().toString())){
-                    return;
-                }
-
-                PremiModel premiModel = CalculateUtils.calculate(vehiclePriceET.getText().toString(),
-                        CalculateUtils.OTOMATE, calculateAddOptComprehensiveModel);
-
-                CalculateResultModel calculateResultModel = new CalculateResultModel();
-                calculateResultModel.setNama_tertanggung(prospectET.getText().toString());
-                calculateResultModel.setKategori_kendaraan(categorySpinnerAdapter.getItem(categorySpinner.getSelectedItemPosition()).getName());
-                calculateResultModel.setJenis_asuransi(insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
-                calculateResultModel.setTahun_kendaraan(vehicleYearSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
-                String agentName = SharedPreferenceUtilities.getFromSessionSP(CalculateActivity.this, SharedPreferenceUtilities.USER_FIRST_NAME) + " " +
-                        SharedPreferenceUtilities.getFromSessionSP(CalculateActivity.this, SharedPreferenceUtilities.USER_LAST_NAME);
-                calculateResultModel.setAgent_name(agentName);
-                calculateResultModel.setNilai_pertanggungan(CalculateUtils.stringToDouble(vehiclePriceET.getText().toString()));
-                calculateResultModel.setPremi(premiModel.getPremi());
-                calculateResultModel.setRate(premiModel.getRate());
-                calculateResultModel.setThird_party("");
-                calculateResultModel.setPersonal_accident("");
-                calculateResultModel.setMerek_kendaraan(vehicleManufacturerET.getText().toString());
-                calculateResultModel.setUser_email("");
-
-                Gson gson = new Gson();
-                String calcResExtra = gson.toJson(calculateResultModel);
-
-                Intent intent = new Intent(CalculateActivity.this, CalculateResultActivity.class);
-                intent.putExtra(CalculateResultModel.CALC_RESULT_EXTRA, calcResExtra);
-                startActivity(intent);
             }
         });
 
@@ -231,8 +242,8 @@ public class CalculateActivity extends BaseActivity {
         List<CalculateModel> returnRegion = new ArrayList<>();
 
         returnRegion.add(new CalculateModel("0", getString(R.string.otomate)));
-//        returnRegion.add(new CalculateModel("1", getString(R.string.comprehensive)));
-//        returnRegion.add(new CalculateModel("2", getString(R.string.total_lost_only)));
+        returnRegion.add(new CalculateModel("1", getString(R.string.comprehensive)));
+        returnRegion.add(new CalculateModel("2", getString(R.string.total_lost_only)));
 
         return returnRegion;
     }
