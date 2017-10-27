@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.gmg.icalc"
         minSdkVersion 17
@@ -18,12 +18,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig getSigningConfig()
             applicationVariants.all { variant ->
-                variant.outputs.each { output ->
-                    def date = new Date();
+                variant.outputs.all { output ->
+                    /*def date = new Date();
                     def formattedDate = date.format('yyyy MM dd')
                     output.outputFile = new File(output.outputFile.parent,
                             output.outputFile.name.replace("app-release", "IC - " + formattedDate)
-                    )
+                    )*/
+                    def date = new Date();
+                    def formattedDate = date.format('yyyy MM dd')
+                    outputFileName = "IC ${variant.name}-${variant.versionName}-${formattedDate}.apk"
                 }
             }
         }
