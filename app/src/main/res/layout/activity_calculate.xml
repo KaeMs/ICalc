@@ -105,6 +105,33 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <com.gmg.icalc.CustomViews.CustomFontTextView
+                android:id="@+id/calculate_genderlbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/gender"/>
+
+            <RadioGroup
+                android:id="@+id/calculate_genderrg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.gmg.icalc.CustomViews.CustomFontRadioButton
+                    android:id="@+id/calculate_malerb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/male"/>
+
+                <com.gmg.icalc.CustomViews.CustomFontRadioButton
+                    android:id="@+id/calculate_femalerb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"/>
+
+            </RadioGroup>
+
             <!-- Category -->
             <com.gmg.icalc.CustomViews.CustomFontTextView
                 android:layout_width="wrap_content"

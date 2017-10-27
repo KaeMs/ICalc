@@ -18,6 +18,7 @@ import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.gmg.icalc.BaseActivity;
 import com.gmg.icalc.CustomViews.CustomFontButton;
 import com.gmg.icalc.CustomViews.CustomFontEditText;
+import com.gmg.icalc.CustomViews.CustomFontRadioButton;
 import com.gmg.icalc.CustomViews.CustomFontTextView;
 import com.gmg.icalc.R;
 import com.gmg.icalc.SharedPreferenceUtilities;
@@ -53,6 +54,8 @@ public class CalculateActivity extends BaseActivity {
     TextInputLayout prospectTil;
     @BindView(R.id.calculate_prospect_et)
     CustomFontEditText prospectET;
+    @BindView(R.id.calculate_malerb)
+    CustomFontRadioButton maleRb;
     @BindView(R.id.calculate_vehicle_category_spinner)
     Spinner categorySpinner;
     CalculateSpinnerAdapter categorySpinnerAdapter;
@@ -163,7 +166,8 @@ public class CalculateActivity extends BaseActivity {
                             Integer.valueOf(insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getId()), calculateAddOptComprehensiveModel);
 
                     CalculateResultModel calculateResultModel = new CalculateResultModel();
-                    calculateResultModel.setNama_tertanggung(prospectET.getText().toString());
+                    String prospectName = maleRb.isChecked() ? getString(R.string.mister): getString(R.string.miss) + prospectET.getText().toString();
+                    calculateResultModel.setNama_tertanggung(prospectName);
                     calculateResultModel.setKategori_kendaraan(categorySpinnerAdapter.getItem(categorySpinner.getSelectedItemPosition()).getName());
                     calculateResultModel.setJenis_asuransi(insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
                     calculateResultModel.setTahun_kendaraan(vehicleYearSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
