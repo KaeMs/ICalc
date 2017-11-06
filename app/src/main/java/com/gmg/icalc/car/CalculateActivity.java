@@ -20,6 +20,7 @@ import com.gmg.icalc.CustomViews.CustomFontButton;
 import com.gmg.icalc.CustomViews.CustomFontEditText;
 import com.gmg.icalc.CustomViews.CustomFontRadioButton;
 import com.gmg.icalc.CustomViews.CustomFontTextView;
+import com.gmg.icalc.InsuranceTypeContent;
 import com.gmg.icalc.R;
 import com.gmg.icalc.SharedPreferenceUtilities;
 import com.gmg.icalc.utils.CalculateUtils;
@@ -163,7 +164,7 @@ public class CalculateActivity extends BaseActivity {
             public void onClick(View view) {
                 if (mAwesomeValidation.validate()){
                     PremiModel premiModel = CalculateUtils.calculate(vehiclePriceET.getText().toString(),
-                            Integer.valueOf(insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getId()), calculateAddOptComprehensiveModel);
+                            insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getId(), calculateAddOptComprehensiveModel);
 
                     CalculateResultModel calculateResultModel = new CalculateResultModel();
                     String prospectName = maleRb.isChecked() ? getString(R.string.mister): getString(R.string.miss) + prospectET.getText().toString();
@@ -245,9 +246,9 @@ public class CalculateActivity extends BaseActivity {
     private List<CalculateModel> getType() {
         List<CalculateModel> returnRegion = new ArrayList<>();
 
-        returnRegion.add(new CalculateModel("0", getString(R.string.otomate)));
-        returnRegion.add(new CalculateModel("1", getString(R.string.comprehensive)));
-        returnRegion.add(new CalculateModel("2", getString(R.string.total_lost_only)));
+        returnRegion.add(new CalculateModel(InsuranceTypeContent.OTOMATE.getId(), getString(R.string.otomate)));
+        returnRegion.add(new CalculateModel(InsuranceTypeContent.COMPREHENSIVE.getId(), getString(R.string.comprehensive)));
+        returnRegion.add(new CalculateModel(InsuranceTypeContent.TOTAL_LOST.getId(), getString(R.string.total_lost_only)));
 
         return returnRegion;
     }

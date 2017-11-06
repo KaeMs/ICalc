@@ -160,6 +160,20 @@
                 android:layout_marginTop="5dp"
                 android:spinnerMode="dialog" />
 
+            <!-- Otomate Type -->
+            <com.gmg.icalc.CustomViews.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/insurance_type" />
+
+            <Spinner
+                android:id="@+id/calculate_otomate_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dialog" />
+
             <!-- Year -->
             <com.gmg.icalc.CustomViews.CustomFontTextView
                 android:layout_width="wrap_content"

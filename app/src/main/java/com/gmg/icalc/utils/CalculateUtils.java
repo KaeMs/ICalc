@@ -1,5 +1,6 @@
 package com.gmg.icalc.utils;
 
+import com.gmg.icalc.InsuranceTypeContent;
 import com.gmg.icalc.car.CalculateAddOptComprehensiveModel;
 import com.gmg.icalc.car.PremiModel;
 
@@ -63,13 +64,13 @@ public class CalculateUtils {
         }
     }
 
-    public static PremiModel calculate(String vehiclePrice, int insuranceType, CalculateAddOptComprehensiveModel additionalOpts){
+    public static PremiModel calculate(String vehiclePrice, String insuranceType, CalculateAddOptComprehensiveModel additionalOpts){
         PremiModel premiModel = new PremiModel();
         double percentage = 0;
         vehiclePrice = vehiclePrice.replace(".", "").replace(",", "");
-        if (insuranceType == OTOMATE){
+        if (insuranceType.equals(InsuranceTypeContent.OTOMATE.getId())){
             percentage += getOtomate(vehiclePrice);
-        } else if (insuranceType == OTOMATE_SMART){
+        } else if (insuranceType.equals(InsuranceTypeContent.OTOMATE_SMART.getId())){
             percentage += getOtomateSmart(vehiclePrice);
         } else {
             percentage += getOtomateSolitaire(vehiclePrice);

@@ -28,6 +28,7 @@
     <string name="vehicle_price_missing">Harga kendaraan harus diisi</string>
     <string name="vehicle_category">Kategori Kendaraan</string>
     <string name="insurance_type">Jenis Asuransi</string>
+    <string name="otomate_type">Jenis Otomate</string>
     <string name="insurance_type_colon">Jenis Asuransi :</string>
     <string name="vehicle_year">Tahun Kendaraan</string>
     <string name="region">Wilayah</string>
