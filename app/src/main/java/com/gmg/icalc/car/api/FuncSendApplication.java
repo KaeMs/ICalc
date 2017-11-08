@@ -25,14 +25,16 @@ public class FuncSendApplication extends AsyncTask<CalculateResultModel, Integer
     private Context context;
     private ProgressDialog progressDialog;
     private SendApplicationIntf intf;
+    private String apiUrl;
 
     public interface SendApplicationIntf {
         void onFinishSendApplication(ResponseAPI responseAPI);
     }
 
-    public FuncSendApplication(Context context, SendApplicationIntf intf) {
+    public FuncSendApplication(Context context, String url, SendApplicationIntf intf) {
         this.context = context;
         this.intf = intf;
+        this.apiUrl = url;
     }
 
     @Override
@@ -50,7 +52,7 @@ public class FuncSendApplication extends AsyncTask<CalculateResultModel, Integer
     protected ResponseAPI doInBackground(CalculateResultModel... params) {
         ResponseAPI responseAPI = new ResponseAPI();
         try {
-            String url = APIConstants.API_URL + APIConstants.SUBMIT_APPLICATION;
+            String url = APIConstants.API_URL + apiUrl;
 
             OkHttpClient client = new OkHttpClient.Builder()
                     .connectTimeout(APIConstants.connectTimeout, TimeUnit.SECONDS)

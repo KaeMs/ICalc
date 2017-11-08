@@ -22,7 +22,7 @@ public class CalculateUtils {
     public static final String ADDITIONAL_INFO_INTENT = "additionalInfo";
     public static final String CALCULATION_RESULT_INTENT = "calculationResult";
 
-    private static double getOtomate (String vehiclePrice){
+    private static double getOtomate(String vehiclePrice) {
         int category = getCategory(vehiclePrice);
         if (category == 1) return 3.92;
         else if (category == 2) return 3.02;
@@ -31,7 +31,7 @@ public class CalculateUtils {
         else return 1.25;
     }
 
-    private static double getOtomateSmart (String vehiclePrice){
+    private static double getOtomateSmart(String vehiclePrice) {
         int category = getCategory(vehiclePrice);
         if (category == 1) return 3.59;
         else if (category == 2) return 2.73;
@@ -40,7 +40,7 @@ public class CalculateUtils {
         else return 1.11;
     }
 
-    private static double getOtomateSolitaire (String vehiclePrice){
+    private static double getOtomateSolitaire(String vehiclePrice) {
         int category = getCategory(vehiclePrice);
         if (category == 1) return 4.16;
         else if (category == 2) return 3.25;
@@ -49,37 +49,49 @@ public class CalculateUtils {
         else return 1.44;
     }
 
-    private static int getCategory(String vehiclePriceStr){
+    private static int getCategory(String vehiclePriceStr) {
         int vehiclePrice = Integer.valueOf(vehiclePriceStr.replace(".", "").replace(",", ""));
-        if (vehiclePrice >= 0 && vehiclePrice < 126000000){
+        if (vehiclePrice >= 0 && vehiclePrice < 126000000) {
             return 1;
-        } else if (vehiclePrice >= 126000000 && vehiclePrice < 200000000){
+        } else if (vehiclePrice >= 126000000 && vehiclePrice < 200000000) {
             return 2;
-        } else if (vehiclePrice >= 200000000 && vehiclePrice < 400000000){
+        } else if (vehiclePrice >= 200000000 && vehiclePrice < 400000000) {
             return 3;
-        } else if (vehiclePrice >= 400000000 && vehiclePrice < 800000000){
+        } else if (vehiclePrice >= 400000000 && vehiclePrice < 800000000) {
             return 4;
         } else {
             return 5;
         }
     }
 
-    public static PremiModel calculate(String vehiclePrice, String insuranceType, CalculateAddOptComprehensiveModel additionalOpts){
+    public static PremiModel calculate(String vehiclePrice, String insuranceType, CalculateAddOptComprehensiveModel additionalOpts) {
         PremiModel premiModel = new PremiModel();
         double percentage = 0;
         vehiclePrice = vehiclePrice.replace(".", "").replace(",", "");
-        if (insuranceType.equals(InsuranceTypeContent.OTOMATE.getId())){
+        if (insuranceType.equals(InsuranceTypeContent.OTOMATE.getId())) {
             percentage += getOtomate(vehiclePrice);
-        } else if (insuranceType.equals(InsuranceTypeContent.OTOMATE_SMART.getId())){
+        } else if (insuranceType.equals(InsuranceTypeContent.OTOMATE_SMART.getId())) {
             percentage += getOtomateSmart(vehiclePrice);
         } else {
             percentage += getOtomateSolitaire(vehiclePrice);
         }
 
-        if (additionalOpts.isTSFWD()) percentage += 0.1;
-        if (additionalOpts.isEQVET()) percentage += 0.1;
-        if (additionalOpts.isSRCC()) percentage += 0.05;
-        if (additionalOpts.isTS()) percentage += 0.05;
+        if (additionalOpts.isTSFWD()) {
+            percentage += 0.1;
+            premiModel.setTSFWD(0.1);
+        }
+        if (additionalOpts.isEQVET()) {
+            percentage += 0.1;
+            premiModel.setEQVET(0.1);
+        }
+        if (additionalOpts.isSRCC()) {
+            percentage += 0.05;
+            premiModel.setSRCCTS(0.05);
+        }
+        if (additionalOpts.isTS()) {
+            percentage += 0.05;
+            premiModel.setTS(0.05);
+        }
 
         premiModel.setRate(percentage);
         percentage = percentage / 100;
@@ -87,20 +99,20 @@ public class CalculateUtils {
         return premiModel;
     }
 
-    public static String numberToString(Double d){
+    public static String numberToString(Double d) {
         return String.format(Locale.getDefault(), "%1$,.2f", d);
     }
 
-    public static String numberToString(int i){
+    public static String numberToString(int i) {
         return String.valueOf(i);
     }
 
-    public static Double stringToDouble(String s){
-        s = s.replace("." , "").replace(",", "");
+    public static Double stringToDouble(String s) {
+        s = s.replace(".", "").replace(",", "");
         return Double.parseDouble(s);
     }
 
-    public static int stringToInt(String s){
+    public static int stringToInt(String s) {
         return Integer.parseInt(s);
     }
 }

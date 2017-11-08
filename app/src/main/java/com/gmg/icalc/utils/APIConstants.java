@@ -9,7 +9,10 @@ public class APIConstants {
     public static final String WEB_URL = "http://www.asuransipremimurah.com";
 
     public static final String LOGIN = "/api/login";
-    public static final String SUBMIT_APPLICATION = "/api/document";
+    public static final String SEND_OTOMATE = "/api/SendDocument";
+    public static final String SEND_SOLITAIRE = "/api/SendSolitareDocument";
+    public static final String SEND_COMPREHENSIVE = "/api/SendComprehensiveDocument";
+    public static final String SEND_TLO = "/api/SendDocument";
     public static final int connectTimeout = 15;
     public static final int writeTimeout = 15;
     public static final int readTimeout = 30;

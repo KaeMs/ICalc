@@ -15,6 +15,7 @@ import com.gmg.icalc.BaseActivity;
 import com.gmg.icalc.CustomViews.CustomFontButton;
 import com.gmg.icalc.CustomViews.CustomFontEditText;
 import com.gmg.icalc.CustomViews.CustomFontTextView;
+import com.gmg.icalc.InsuranceTypeContent;
 import com.gmg.icalc.MainActivity;
 import com.gmg.icalc.R;
 import com.gmg.icalc.ResponseAPI;
@@ -90,7 +91,9 @@ public class CalculateResultActivity extends BaseActivity implements FuncSendApp
                     emailTil.setError(null);
                 }
                 calculateResultModel.setUser_email(email.getText().toString());
-                FuncSendApplication funcSendApplication = new FuncSendApplication(CalculateResultActivity.this, CalculateResultActivity.this);
+                FuncSendApplication funcSendApplication =
+                        new FuncSendApplication(CalculateResultActivity.this,
+                                InsuranceTypeContent.getAppropiateUrl(calculateResultModel.getJenis_asuransi()), CalculateResultActivity.this);
                 funcSendApplication.execute(calculateResultModel);
                 sendApplication.setEnabled(false);
             }

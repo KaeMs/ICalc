@@ -163,6 +163,7 @@ public class CalculateActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 if (mAwesomeValidation.validate()){
+                    double vehiclePriceDbl = Double.parseDouble(vehiclePriceET.getText().toString().replace(".", "").replace(",", ""));
                     PremiModel premiModel = CalculateUtils.calculate(vehiclePriceET.getText().toString(),
                             insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getId(), calculateAddOptComprehensiveModel);
 
@@ -178,10 +179,27 @@ public class CalculateActivity extends BaseActivity {
                     calculateResultModel.setNilai_pertanggungan(CalculateUtils.stringToDouble(vehiclePriceET.getText().toString()));
                     calculateResultModel.setPremi(premiModel.getPremi());
                     calculateResultModel.setRate(premiModel.getRate());
-                    calculateResultModel.setThird_party("");
-                    calculateResultModel.setPersonal_accident("");
                     calculateResultModel.setMerek_kendaraan(vehicleManufacturerET.getText().toString());
                     calculateResultModel.setUser_email("");
+
+                    if (calculateResultModel.getJenis_asuransi().equals(InsuranceTypeContent.COMPREHENSIVE.getName())){
+                        // TSFWD
+                        calculateResultModel.setTSFWD_tsi(vehiclePriceDbl);
+                        calculateResultModel.setTSFWD_rate(premiModel.getTSFWD());
+                        calculateResultModel.setTSFWD_premi(premiModel.getTSFWD() * vehiclePriceDbl);
+                        // EQVET
+                        calculateResultModel.setEQVET_tsi(vehiclePriceDbl);
+                        calculateResultModel.setEQVET_rate(premiModel.getEQVET());
+                        calculateResultModel.setEQVET_premi(premiModel.getEQVET() * vehiclePriceDbl);
+                        // SRCCTS
+                        calculateResultModel.setSRCCTS_tsi(vehiclePriceDbl);
+                        calculateResultModel.setSRCCTS_rate(premiModel.getSRCCTS());
+                        calculateResultModel.setSRCCTS_premi(premiModel.getSRCCTS() * vehiclePriceDbl);
+
+                        calculateResultModel.setPersonal_accident_driver_premi(premiModel.getPersonalAccidentDriver());
+                        calculateResultModel.setPersonal_accident_penumpang_4_orang_premi(premiModel.getPersonalAccidentPassenger());
+                        calculateResultModel.setThird_party_premi(premiModel.getThirdParty());
+                    }
 
                     Gson gson = new Gson();
                     String calcResExtra = gson.toJson(calculateResultModel);
