@@ -8,7 +8,9 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -63,6 +65,12 @@ public class CalculateActivity extends BaseActivity {
     @BindView(R.id.calculate_insurance_type_spinner)
     Spinner insuranceTypeSpinner;
     CalculateSpinnerAdapter insuranceTypeSpinnerAdapter;
+    @BindView(R.id.calculate_otomate_wrapper)
+    LinearLayout otomateWrapper;
+    @BindView(R.id.calculate_otomate_spinner)
+    Spinner otomateSpinner;
+    CalculateSpinnerAdapter otomateSpinnerAdapter;
+
     @BindView(R.id.calculate_vehicle_year_spinner)
     Spinner vehicleYearSpinner;
     CalculateSpinnerAdapter vehicleYearSpinnerAdapter;
@@ -96,6 +104,31 @@ public class CalculateActivity extends BaseActivity {
         categorySpinner.setAdapter(categorySpinnerAdapter);
         insuranceTypeSpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getType());
         insuranceTypeSpinner.setAdapter(insuranceTypeSpinnerAdapter);
+
+        otomateSpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getOtomateType());
+        otomateSpinner.setAdapter(otomateSpinnerAdapter);
+
+        insuranceTypeSpinner.post(new Runnable() {
+            @Override
+            public void run() {
+                insuranceTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (insuranceTypeSpinnerAdapter.getItem(position).getId().equals(InsuranceTypeContent.OTOMATE.getId())){
+                            otomateWrapper.setVisibility(View.VISIBLE);
+                        } else {
+                            otomateWrapper.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+            }
+        });
+
         vehicleYearSpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getVehicleYear());
         vehicleYearSpinner.setAdapter(vehicleYearSpinnerAdapter);
         regionSpinnerAdapter = new CalculateSpinnerAdapter(this, R.layout.spinner_calculate_view, getArea());
@@ -171,7 +204,24 @@ public class CalculateActivity extends BaseActivity {
                     String prospectName = maleRb.isChecked() ? getString(R.string.mister): getString(R.string.miss) + prospectET.getText().toString();
                     calculateResultModel.setNama_tertanggung(prospectName);
                     calculateResultModel.setKategori_kendaraan(categorySpinnerAdapter.getItem(categorySpinner.getSelectedItemPosition()).getName());
-                    calculateResultModel.setJenis_asuransi(insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
+                    String insuranceType = "";
+                    if (insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition())
+                            .getId().equals(InsuranceTypeContent.OTOMATE.getId())){
+                        if (otomateSpinnerAdapter.getItem(otomateSpinner.getSelectedItemPosition())
+                                .getId().equals(InsuranceTypeContent.OTOMATE.getId())){
+                            insuranceType = InsuranceTypeContent.OTOMATE.getId();
+                        } else if (otomateSpinnerAdapter.getItem(otomateSpinner.getSelectedItemPosition())
+                                .getId().equals(InsuranceTypeContent.OTOMATE_SMART.getId())){
+                            insuranceType = InsuranceTypeContent.OTOMATE_SMART.getId();
+                        } else if (otomateSpinnerAdapter.getItem(otomateSpinner.getSelectedItemPosition())
+                                .getId().equals(InsuranceTypeContent.OTOMATE_SOLITAIRE.getId())){
+                            insuranceType = InsuranceTypeContent.OTOMATE_SOLITAIRE.getId();
+                        }
+                    } else {
+                        insuranceType = insuranceTypeSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getId();
+                    }
+
+                    calculateResultModel.setJenis_asuransi(insuranceType);
                     calculateResultModel.setTahun_kendaraan(vehicleYearSpinnerAdapter.getItem(insuranceTypeSpinner.getSelectedItemPosition()).getName());
                     String agentName = SharedPreferenceUtilities.getFromSessionSP(CalculateActivity.this, SharedPreferenceUtilities.USER_FIRST_NAME) + " " +
                             SharedPreferenceUtilities.getFromSessionSP(CalculateActivity.this, SharedPreferenceUtilities.USER_LAST_NAME);
@@ -269,6 +319,16 @@ public class CalculateActivity extends BaseActivity {
         returnRegion.add(new CalculateModel(InsuranceTypeContent.TOTAL_LOST.getId(), getString(R.string.total_lost_only)));
 
         return returnRegion;
+    }
+
+    private List<CalculateModel> getOtomateType() {
+        List<CalculateModel> returnOto = new ArrayList<>();
+
+        returnOto.add(new CalculateModel(InsuranceTypeContent.OTOMATE.getId(), InsuranceTypeContent.OTOMATE.getName()));
+        returnOto.add(new CalculateModel(InsuranceTypeContent.OTOMATE_SMART.getId(), InsuranceTypeContent.OTOMATE_SMART.getName()));
+        returnOto.add(new CalculateModel(InsuranceTypeContent.OTOMATE_SOLITAIRE.getId(), InsuranceTypeContent.OTOMATE_SOLITAIRE.getName()));
+
+        return returnOto;
     }
 
     private List<CalculateModel> getVehicleYear() {
